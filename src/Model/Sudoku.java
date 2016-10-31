@@ -1,9 +1,11 @@
 package Model;
 
+import java.util.Observable;
+
 import View.Grid;
 import View.GridButtons;
 
-public class Sudoku {
+public class Sudoku extends Observable {
 
 
 	public int getNumb() {

@@ -43,7 +43,7 @@ public class ControllerSudoku implements MouseListener {
 				sudoku.setNumb(xComponent, yComponent, 0);
 				box.setNumber(0, false);
 			}
-			grid.update(sudoku, someupdate);
+			grid.update(sudoku, (Object)box);
 			
 		}
 		

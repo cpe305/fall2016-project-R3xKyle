@@ -12,7 +12,7 @@ public class GamePanel extends JFrame {
 
 	public GamePanel() {
 		super("My Sudoku");
-		//setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		getContentPane().setLayout(new BorderLayout());
 		
 		Sudoku sudoku = new Sudoku();

@@ -1,14 +1,14 @@
 package View;
 
-import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JPanel;
 
 import Controller.ControllerSudoku;
 import Model.Sudoku;
 
-public class Grid implements Observer {
+public class Grid extends JPanel implements Observer {
 	
 	
 	public Grid() {
