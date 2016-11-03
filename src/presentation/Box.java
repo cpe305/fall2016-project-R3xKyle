@@ -1,4 +1,4 @@
-package View;
+package presentation;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,7 +17,7 @@ public class Box extends JLabel {
 		this.x = x;
 		this.y = y;
 		
-		setPreferredSize(new Dimension(40, 40));
+		setPreferredSize(new Dimension(40, 40)); // New dimension???
 		setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
 		setOpaque(true);

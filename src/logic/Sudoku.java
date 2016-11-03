@@ -1,9 +1,9 @@
-package Model;
+package logic;
 
 import java.util.Observable;
 
-import View.Grid;
-import View.GridButtons;
+import presentation.Grid;
+import presentation.GridButtons;
 
 public class Sudoku extends Observable {
 

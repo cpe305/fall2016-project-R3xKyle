@@ -1,12 +1,12 @@
-package View;
+package presentation;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import Controller.ControllerButton;
-import Controller.ControllerSudoku;
-import Model.Sudoku;
+import logic.ControllerButton;
+import logic.ControllerSudoku;
+import logic.Sudoku;
 
 public class GamePanel extends JFrame {
 

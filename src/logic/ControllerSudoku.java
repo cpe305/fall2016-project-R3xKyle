@@ -1,4 +1,4 @@
-package Controller;
+package logic;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,9 +7,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import Model.Sudoku;
-import View.Box;
-import View.Grid;
+import presentation.Box;
+import presentation.Grid;
 
 public class ControllerSudoku implements MouseListener {
 
