@@ -14,19 +14,19 @@ public class ControllerButton implements ActionListener {
 	}
 	
 	public void actionOnSudokuPanelButtonsPress(ActionEvent buttonPress) {
-		if (buttonPress.getActionCommand().equals("New Easy Game")) {
+		if ("New Easy Game".equals(buttonPress.getActionCommand())) {
 			sudoku.newEasySudoku();
 		}
-		else if (buttonPress.getActionCommand().equals("New Medium Game")) {
+		else if ("New Medium Game".equals(buttonPress.getActionCommand())) {
 			sudoku.newMediumSudoku();
 		}
-		else if (buttonPress.getActionCommand().equals("New Hard Game")){
+		else if ("New Hard Game".equals(buttonPress.getActionCommand())){
 			sudoku.newHardSudoku();
 		}
-		else if (buttonPress.getActionCommand().equals("Check Game")) {
+		else if ("Check Game".equals(buttonPress.getActionCommand())) {
 			sudoku.checkSudoku();
 		}
-		else if (buttonPress.getActionCommand().equals("Quit")) { 
+		else if ("Quit".equals(buttonPress.getActionCommand())) { 
 			System.exit(0);
 		}
 		else {

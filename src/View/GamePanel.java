@@ -38,8 +38,5 @@ public class GamePanel extends JFrame {
 		
 	}
 	
-	public static void main(String[] args) {
-		new Sudoku();
-	}
 
 }
