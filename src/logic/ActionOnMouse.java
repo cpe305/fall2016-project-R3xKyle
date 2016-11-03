@@ -10,12 +10,12 @@ import javax.swing.JPanel;
 import presentation.Box;
 import presentation.Grid;
 
-public class ControllerSudoku implements MouseListener {
+public class ActionOnMouse implements MouseListener {
 
 	private Grid grid;
 	private Sudoku sudoku;
 	
-	public ControllerSudoku(Grid grid, Sudoku sudoku) {
+	public ActionOnMouse(Grid grid, Sudoku sudoku) {
 		this.grid = grid;
 		this.sudoku = sudoku;
 	}

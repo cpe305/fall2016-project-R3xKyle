@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import logic.ControllerButton;
+import logic.ActionOnButton;
 
 // Button class that has all buttons in game
 public class GridButtons extends JPanel implements Observer {
@@ -85,7 +85,7 @@ public class GridButtons extends JPanel implements Observer {
 	}
 	
 	// add a listener to each button 
-	public void controllerSetup(ControllerButton bController) {
+	public void controllerSetup(ActionOnButton bController) {
 		easyGameButton.addActionListener(bController);
 		mediumGameButton.addActionListener(bController);
 		hardGameButton.addActionListener(bController);

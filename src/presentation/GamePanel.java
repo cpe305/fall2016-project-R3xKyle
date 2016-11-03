@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import logic.ControllerButton;
-import logic.ControllerSudoku;
+import logic.ActionOnButton;
+import logic.ActionOnMouse;
 import logic.Sudoku;
 
 public class GamePanel extends JFrame {
@@ -17,13 +17,13 @@ public class GamePanel extends JFrame {
 		
 		Sudoku sudoku = new Sudoku();
 		
-		ControllerButton controllerButton = new ControllerButton(sudoku);
+		ActionOnButton controllerButton = new ActionOnButton(sudoku);
 		GridButtons sudokuPanelButtons = new GridButtons();
 		sudokuPanelButtons.controllerSetup(controllerButton);
 		add(sudokuPanelButtons, BorderLayout.WEST);
 		
 		Grid grid = new Grid();
-		ControllerSudoku controllerSudoku = new ControllerSudoku(grid, sudoku);
+		ActionOnMouse controllerSudoku = new ActionOnMouse(grid, sudoku);
 		grid.setGame(sudoku); // easy, medium, or hard???
 		grid.controllerSetup(controllerSudoku);
 		add(grid, BorderLayout.EAST);

@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import logic.ControllerSudoku;
+import logic.ActionOnMouse;
 import logic.Sudoku;
 
 public class Grid extends JPanel implements Observer {
@@ -26,7 +26,7 @@ public class Grid extends JPanel implements Observer {
 		
 	}
 
-	public void controllerSetup(ControllerSudoku controllerSudoku) {
+	public void controllerSetup(ActionOnMouse controllerSudoku) {
 		// TODO Auto-generated method stub
 		
 	}
