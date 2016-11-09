@@ -1,3 +1,4 @@
+
 package presentation;
 
 import java.awt.Color;
@@ -9,13 +10,14 @@ import javax.swing.JLabel;
 
 public class Box extends JLabel {
 
-	private int xComponent;
-	private int yComponent;
+
+	private int x;
+	private int y;
 	
-	public Box(int xComponent, int yComponent) {
+	public Box(int x, int y) {
 		super("", CENTER);
-		this.xComponent = xComponent;
-		this.yComponent = yComponent;
+		this.x = x;
+		this.y = y;
 		
 		setPreferredSize(new Dimension(40, 40)); // New dimension???
 		setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -40,9 +42,9 @@ public class Box extends JLabel {
 	}
 	
 	public int getXComponent() {
-		return xComponent;
+		return x;
 	}
 	public int getYComponent() {
-		return yComponent;
+		return y;
 	}
 }

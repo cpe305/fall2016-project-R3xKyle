@@ -1,3 +1,5 @@
+GRID
+
 package presentation;
 
 import java.awt.Color;
@@ -67,7 +69,7 @@ public class Grid extends JPanel implements Observer {
 		}
 		
 		panelsMedium = new JPanel[2][3];
-		for (int i = 0; i < 2; i++) {
+		for (int i= 0; i < 2; i++) {
 			for (int j = 0; j < 3; j++) {
 				panelsMedium[i][j] = new JPanel(new GridLayout(2,3));
 				panelsMedium[i][j].setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
@@ -125,7 +127,7 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				boxesEasy[i][j].setBackground(Color.WHITE);
-				boxesEasy[i][j].setNumber(sudoku.getNumberXY(j, i), false);
+				boxesEasy[i][j].setNumber(sudoku.getNumber(j, i), false);
 			}
 		}
 
@@ -149,7 +151,7 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				boxesMedium[i][j].setBackground(Color.WHITE);
-				boxesMedium[i][j].setNumber(sudoku.getNumberXY(j, i), false);
+				boxesMedium[i][j].setNumber(sudoku.getNumber(j, i), false);
 			}
 		}
 	}	
@@ -172,13 +174,13 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				boxesHard[i][j].setBackground(Color.WHITE);
-				boxesHard[i][j].setNumber(sudoku.getNumberXY(j, i), false);
+				boxesHard[i][j].setNumber(sudoku.getNumber(j, i), false);
 			}
 		}
 	}
 
 
-	private void setGameCheck(Sudoku sudoku) { 
+	private void setGameCheck(Sudoku sudoku) { // this is not working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! use isPossibleCOmponent and block logic in setBackground()
 		int size = sudoku.getSize();
 
 		if ("Easy".equals(currentMode)) {
@@ -186,6 +188,7 @@ public class Grid extends JPanel implements Observer {
 				for (int j = 0; j < 4; j++) {
 					boxesEasy[i][j].setBackground(Color.WHITE);
 					if (boxesEasy[i][j].getForeground().equals(Color.BLUE)) {
+						System.out.println("HEEHEHEHHEHE");
 						boxesEasy[i][j].setBackground(sudoku.isCheckEasy(j, i) ? Color.GREEN : Color.RED);
 					}
 				}
@@ -197,6 +200,7 @@ public class Grid extends JPanel implements Observer {
 				for (int j = 0; j < 6; j++) {
 					boxesMedium[i][j].setBackground(Color.WHITE);
 					if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
+						System.out.println("HEEHEHEHHEHE");
 						boxesMedium[i][j].setBackground(sudoku.isCheckMedium(j, i) ? Color.GREEN: Color.RED);
 					}
 				}
@@ -244,7 +248,7 @@ public class Grid extends JPanel implements Observer {
 	}
 
 	public void removeMedium() {
-		for (int i = 0; i < 2; i++) {
+		for (int i= 0; i < 2; i++) {
 			for (int j = 0; j < 3; j++) {
 				remove(panelsMedium[i][j]);
 			}

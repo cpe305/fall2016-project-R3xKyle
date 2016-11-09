@@ -30,7 +30,7 @@ public class ActionOnButton implements ActionListener {
 		}
 		else {
 			number = Integer.parseInt(buttonPress.getActionCommand());
-			sudoku.setNumberSimple(number);
+			sudoku.setNumb(number);
 		}
 	}
 

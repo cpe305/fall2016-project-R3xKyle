@@ -1,3 +1,4 @@
+ACTIONONMOUSE
 package logic;
 
 import java.awt.Color;
@@ -30,17 +31,17 @@ public class ActionOnMouse implements MouseListener {
 			int xComponent = box.getXComponent();
 			int yComponent = box.getYComponent();
 			
-			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumberXY(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
-				int number = sudoku.getNumberSimple();
+			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumber(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
+				int number = sudoku.getNumb();
 				if (number == -1) {
 					return;
 				}
-				sudoku.setNumberXY(xComponent, yComponent, number);
+				sudoku.setNumb(xComponent, yComponent, number);
 				box.setNumber(number, true);
 				
 			}
 			else if (click.getButton() == MouseEvent.BUTTON3 && !box.getForeground().equals(Color.BLACK)) {
-				sudoku.setNumberXY(xComponent, yComponent, 0);
+				sudoku.setNumb(xComponent, yComponent, 0);
 				box.setNumber(0, false);
 			}
 			grid.update(sudoku, ObserverInfo.CANDIDATES); // 

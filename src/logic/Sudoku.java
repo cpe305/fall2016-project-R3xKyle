@@ -1,3 +1,5 @@
+SUDOKU
+
 package logic;
 
 import java.util.ArrayList;
@@ -41,17 +43,17 @@ public class Sudoku extends Observable {
 	}
 
 
-	public int getNumberSimple() {
+	public int getNumb() {
 		// TODO Auto-generated method stub
 		return selectedNumber;
 	}
 	
-	public int getNumberXY(int xComponent, int yComponent) {
+	public int getNumber(int xComponent, int yComponent) {
 		// TODO Auto-generated method stub
 		return game[yComponent][xComponent];
 	}
 	
-	public void setNumberSimple(int number) {
+	public void setNumb(int number) {
 		// TODO Auto-generated method stub
 		selectedNumber = number;
 		setChanged();
@@ -59,7 +61,7 @@ public class Sudoku extends Observable {
 		
 	}
 	
-	public void setNumberXY(int xComponent, int yComponent, int i) {
+	public void setNumb(int xComponent, int yComponent, int i) {
 		// TODO Auto-generated method stub
 		game[yComponent][xComponent] = i;
 		
