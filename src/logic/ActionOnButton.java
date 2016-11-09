@@ -3,15 +3,16 @@ package logic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControllerButton implements ActionListener {
+public class ActionOnButton implements ActionListener {
+	private enum observerInfo {NEW_EASY_GAME, NEW_MEDIUM_GAME, NEW_HARD_GAME, CHECK, NUMS, CANDIDATES};
 	private Sudoku sudoku;
 	int number;
 		
-	public ControllerButton (Sudoku sudoku) {
+	public ActionOnButton (Sudoku sudoku) {
 		this.sudoku = sudoku;
 	}
 	
-	public void actionOnSudokuPanelButtonsPress(ActionEvent buttonPress) {
+	public void actionPerformed(ActionEvent buttonPress) {
 		if ("New Easy Game".equals(buttonPress.getActionCommand())) {
 			sudoku.newEasySudoku();
 		}
@@ -29,13 +30,10 @@ public class ControllerButton implements ActionListener {
 		}
 		else {
 			number = Integer.parseInt(buttonPress.getActionCommand());
-			sudoku.setNumb(number);
+			sudoku.setNumberSimple(number);
 		}
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
 }

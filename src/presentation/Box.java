@@ -9,13 +9,13 @@ import javax.swing.JLabel;
 
 public class Box extends JLabel {
 
-	private int x;
-	private int y;
+	private int xComponent;
+	private int yComponent;
 	
-	public Box(int x, int y) {
+	public Box(int xComponent, int yComponent) {
 		super("", CENTER);
-		this.x = x;
-		this.y = y;
+		this.xComponent = xComponent;
+		this.yComponent = yComponent;
 		
 		setPreferredSize(new Dimension(40, 40)); // New dimension???
 		setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -25,8 +25,8 @@ public class Box extends JLabel {
 	
 	//Set the number in the box 
 	public void setNumber(int number, boolean userInput) {
-		if (userInput) {
-			setForeground(Color.RED);
+		if (userInput == true) {
+			setForeground(Color.BLUE);
 		}
 		else {
 			setForeground(Color.BLACK);
@@ -40,9 +40,9 @@ public class Box extends JLabel {
 	}
 	
 	public int getXComponent() {
-		return x;
+		return xComponent;
 	}
 	public int getYComponent() {
-		return y;
+		return yComponent;
 	}
 }

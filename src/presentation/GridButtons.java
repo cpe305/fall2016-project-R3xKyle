@@ -13,10 +13,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import logic.ControllerButton;
+import data.ObserverInfo;
+import logic.ActionOnButton;
 
 // Button class that has all buttons in game
 public class GridButtons extends JPanel implements Observer {
+
 	JButton easyGameButton, mediumGameButton, hardGameButton, quitButton, checkGameButton;
 	JToggleButton[] numberChoices;
 	ButtonGroup groupNumberChoices;
@@ -26,7 +28,7 @@ public class GridButtons extends JPanel implements Observer {
 		
 		// Panel to hold all the other panels
 		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		add(panel, BorderLayout.CENTER);
 		
 		// Panel to hold all the options
@@ -42,6 +44,7 @@ public class GridButtons extends JPanel implements Observer {
 		
 		// Panel with the numbers
 		JPanel numbersPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		numbersPanel.setLayout(new BoxLayout(numbersPanel, BoxLayout.Y_AXIS));
 		numListPanel.add(numbersPanel);
 		
 		// button that would start a new easy game -- 4x4 grid
@@ -60,50 +63,77 @@ public class GridButtons extends JPanel implements Observer {
 		hardGameButton.setFocusable(false);
 		optionsPanel.add(hardGameButton);
 		
+		//button that would check the game
+		checkGameButton = new JButton("Check Game");
+		checkGameButton.setFocusable(false);
+		optionsPanel.add(checkGameButton);
+		
 		//button that would quit the game
 		quitButton = new JButton("Quit");
 		quitButton.setFocusable(false);
 		optionsPanel.add(quitButton);
 		
-		//button that would check the game
-		checkGameButton = new JButton("Check Game");
-		checkGameButton.setFocusable(false);
-		optionsPanel.add(checkGameButton);
+
+		
+		//settings and high scores tab
 		
 		groupNumberChoices = new ButtonGroup();
 		numberChoices = new JToggleButton[9];
 		
 		for (int i = 0; i < 9; i++) {
 			numberChoices[i] = new JToggleButton("" + (i + 1));
-			numberChoices[i].setPreferredSize(new Dimension(30, 30));
+			numberChoices[i].setPreferredSize(new Dimension(50, 50));
 			numberChoices[i].setFocusable(false);
 			groupNumberChoices.add(numberChoices[i]);
 			numbersPanel.add(numberChoices[i]);
 			
 		}
 		
+		//numberChoices[1].setVisible(false); this is how I update UI
+		
 	}
 	
 	// add a listener to each button 
-	public void controllerSetup(ControllerButton bController) {
-		easyGameButton.addActionListener(bController);
-		mediumGameButton.addActionListener(bController);
-		hardGameButton.addActionListener(bController);
-		quitButton.addActionListener(bController);
-		checkGameButton.addActionListener(bController);
+	public void buttonSetup(ActionOnButton buttonAction) {
+		easyGameButton.addActionListener(buttonAction);
+		mediumGameButton.addActionListener(buttonAction);
+		hardGameButton.addActionListener(buttonAction);
+		quitButton.addActionListener(buttonAction);
+		checkGameButton.addActionListener(buttonAction);
 		
 		for (int i = 0; i < 9; i++) {
-			numberChoices[i].addActionListener(bController);
+			numberChoices[i].addActionListener(buttonAction);
 			
 		}
 		
 	}
 
 	@Override
-	// possibly add stuff
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		switch ((ObserverInfo)arg) {
+		case NEW_HARD_GAME:
+			for (int i = 0; i < 9; i++) {
+				numberChoices[i].setVisible(true);
+			}
+			break;
+		case NEW_EASY_GAME:
+			for (int i = 4; i < 9; i++) {
+				numberChoices[i].setVisible(false);
+			}
+			break;
+		case NEW_MEDIUM_GAME:
+			for (int i = 4; i < 6; i++) {
+				numberChoices[i].setVisible(true);
+			}
+			for (int i = 6; i < 9; i++) {
+				numberChoices[i].setVisible(false);
+			}
+			break;
+		case CHECK:
+			groupNumberChoices.clearSelection();
+			break;
+		}
 	}
 
 }

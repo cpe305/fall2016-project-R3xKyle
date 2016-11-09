@@ -7,42 +7,43 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+import data.ObserverInfo;
 import presentation.Box;
 import presentation.Grid;
 
-public class ControllerSudoku implements MouseListener {
+public class ActionOnMouse implements MouseListener {
+
 
 	private Grid grid;
 	private Sudoku sudoku;
 	
-	public ControllerSudoku(Grid grid, Sudoku sudoku) {
+	public ActionOnMouse(Grid grid, Sudoku sudoku) {
 		this.grid = grid;
 		this.sudoku = sudoku;
 	}
 	
-	public void MousePressed(MouseEvent click) {
+	public void mousePressed(MouseEvent click) {
 		JPanel mouseCheck = (JPanel)click.getSource();
 		Component component = mouseCheck.getComponentAt(click.getPoint());
-		
 		if (component instanceof Box) {
 			Box box = (Box)component;
 			int xComponent = box.getXComponent();
 			int yComponent = box.getYComponent();
 			
-			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumber(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
-				int number = sudoku.getNumb();
-				if (number < 0) {
+			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumberXY(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
+				int number = sudoku.getNumberSimple();
+				if (number == -1) {
 					return;
 				}
-				sudoku.setNumb(xComponent, yComponent, number);
+				sudoku.setNumberXY(xComponent, yComponent, number);
 				box.setNumber(number, true);
 				
 			}
 			else if (click.getButton() == MouseEvent.BUTTON3 && !box.getForeground().equals(Color.BLACK)) {
-				sudoku.setNumb(xComponent, yComponent, 0);
+				sudoku.setNumberXY(xComponent, yComponent, 0);
 				box.setNumber(0, false);
 			}
-			grid.update(sudoku, (Object)box);
+			grid.update(sudoku, ObserverInfo.CANDIDATES); // 
 			
 		}
 		
@@ -54,11 +55,6 @@ public class ControllerSudoku implements MouseListener {
 		
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -77,8 +73,5 @@ public class ControllerSudoku implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
 	
 }
