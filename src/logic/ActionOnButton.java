@@ -3,6 +3,7 @@ package logic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class ActionOnButton implements ActionListener {
 	private enum observerInfo {NEW_EASY_GAME, NEW_MEDIUM_GAME, NEW_HARD_GAME, CHECK, NUMS, CANDIDATES};
 	private Sudoku sudoku;
@@ -12,6 +13,7 @@ public class ActionOnButton implements ActionListener {
 		this.sudoku = sudoku;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent buttonPress) {
 		if ("New Easy Game".equals(buttonPress.getActionCommand())) {
 			sudoku.newEasySudoku();
