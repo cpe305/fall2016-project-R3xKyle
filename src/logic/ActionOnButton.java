@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 
 public class ActionOnButton implements ActionListener {
-	private enum observerInfo {NEW_EASY_GAME, NEW_MEDIUM_GAME, NEW_HARD_GAME, CHECK, NUMS, CANDIDATES};
 	private Sudoku sudoku;
 	int number;
 		

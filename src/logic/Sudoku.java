@@ -115,7 +115,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckEasyBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 2) 
 			xBlock = 0;
 		else 
@@ -137,7 +137,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckMediumBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else
@@ -161,7 +161,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckHardBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else if (x < 6)
@@ -263,7 +263,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockEasy(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 2) 
 			xBlock = 0;
 		else 
@@ -285,7 +285,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockMedium(int[][] game2, int x, int y, int selectedNumber2) {
 	
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else
@@ -309,7 +309,7 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockHard(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock = 0, yBlock = 0;
+		int xBlock, yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else if (x < 6)
@@ -349,7 +349,7 @@ public class Sudoku extends Observable {
 			for (int i = 1; i <= size; i++) {
 				numbers.add(i);
 			}
-			while (numbers.size() > 0) {
+			while (!numbers.isEmpty()) {
 				int number = solutionHelper(game, x, y, numbers, size);
 				if (number == -1) {
 					break;
@@ -414,7 +414,7 @@ public class Sudoku extends Observable {
 		}
 		Collections.shuffle(numbers);
 		
-		while (numbers.size() > 0) { 
+		while (!numbers.isEmpty()) { 
 			int number = solutionHelper(game, x, y, numbers, size);
 			if (number == -1) {
 				return null;
@@ -430,7 +430,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private int solutionHelper(int[][] game, int i, int j, List<Integer> numbers, int size) {
-		while (numbers.size() > 0) {
+		while (!numbers.isEmpty()) {
 			int number = numbers.remove(0);
 			if (size == 4) {
 				if (isPossibleComponentEasy(game, j, number, 1) && isPossibleComponentEasy(game, i, number, 0) && isPossibleBlockEasy(game, i, j, number)) {
@@ -469,7 +469,7 @@ public class Sudoku extends Observable {
 	}
 	
 	public int[][] createGame(int[][] game, List<Integer> positions, int size) {
-		while (positions.size() > 0) {
+		while (!positions.isEmpty()) {
 			int position = positions.remove(0);
 			int x = position % size;
 			int y = position / size;
