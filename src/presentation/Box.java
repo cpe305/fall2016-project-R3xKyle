@@ -34,7 +34,7 @@ public class Box extends JLabel {
 			setForeground(Color.BLACK);
 		}
 		if (number > 0) {
-			setText(number + "");
+			setText(Integer.toString(number));
 		}
 		else {
 			setText("");

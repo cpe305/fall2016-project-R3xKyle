@@ -180,8 +180,6 @@ public class Grid extends JPanel implements Observer {
 
 
 	private void setGameCheck(Sudoku sudoku) {
-		int size = sudoku.getSize();
-
 		if ("Easy".equals(currentMode)) {
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
@@ -220,7 +218,7 @@ public class Grid extends JPanel implements Observer {
 	}
 	
 	public void mouseSetup(ActionOnMouse mouseAction) {
-		// TODO Auto-generated method stub
+		
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				panelsEasy[i][j].addMouseListener(mouseAction);

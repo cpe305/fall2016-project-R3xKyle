@@ -22,6 +22,7 @@ public class ActionOnMouse implements MouseListener {
 		this.sudoku = sudoku;
 	}
 	
+	@Override
 	public void mousePressed(MouseEvent click) {
 		JPanel mouseCheck = (JPanel)click.getSource();
 		Component component = mouseCheck.getComponentAt(click.getPoint());
@@ -51,25 +52,25 @@ public class ActionOnMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		// Do nothing because only care about mousePressed in this project
 	}
 
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
+		// Do nothing because only care about mousePressed in this project
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
+		// Do nothing because only care about mousePressed in this project
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-
+		// Do nothing because only care about mousePressed in this project
 		
 	}
 	

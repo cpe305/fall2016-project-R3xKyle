@@ -81,15 +81,13 @@ public class GridButtons extends JPanel implements Observer {
 		numberChoices = new JToggleButton[9];
 		
 		for (int i = 0; i < 9; i++) {
-			numberChoices[i] = new JToggleButton("" + (i + 1));
+			numberChoices[i] = new JToggleButton(Integer.toString(i + 1));
 			numberChoices[i].setPreferredSize(new Dimension(50, 50));
 			numberChoices[i].setFocusable(false);
 			groupNumberChoices.add(numberChoices[i]);
 			numbersPanel.add(numberChoices[i]);
 			
 		}
-		
-		//numberChoices[1].setVisible(false); this is how I update UI
 		
 	}
 	

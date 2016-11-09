@@ -14,7 +14,8 @@ public class Sudoku extends Observable {
 	
 	private int[][] solution;
 	private int[][] game;
-	private int selectedNumber, size;
+	private int selectedNumber; 
+	private int size;
 	
 	public Sudoku() {
 		newHardSudoku();
@@ -115,7 +116,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckEasyBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 2) 
 			xBlock = 0;
 		else 
@@ -137,7 +139,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckMediumBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else
@@ -161,7 +164,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleCheckHardBlock(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else if (x < 6)
@@ -263,7 +267,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockEasy(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 2) 
 			xBlock = 0;
 		else 
@@ -285,7 +290,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockMedium(int[][] game2, int x, int y, int selectedNumber2) {
 	
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else
@@ -309,7 +315,8 @@ public class Sudoku extends Observable {
 	
 	private boolean isPossibleBlockHard(int[][] game2, int x, int y, int selectedNumber2) {
 
-		int xBlock, yBlock;
+		int xBlock;
+		int yBlock;
 		if (x < 3) 
 			xBlock = 0;
 		else if (x < 6)
