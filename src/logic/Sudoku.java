@@ -1,4 +1,5 @@
 
+
 package logic;
 
 import java.util.ArrayList;
@@ -42,26 +43,25 @@ public class Sudoku extends Observable {
 	}
 
 
-	public int getNumb() {
-		// TODO Auto-generated method stub
+	public int getNumberSimple() {
 		return selectedNumber;
 	}
 	
-	public int getNumber(int xComponent, int yComponent) {
-		// TODO Auto-generated method stub
+	public int getNumberXY(int xComponent, int yComponent) {
+
 		return game[yComponent][xComponent];
 	}
 	
-	public void setNumb(int number) {
-		// TODO Auto-generated method stub
+	public void setNumberSimple(int number) {
+
 		selectedNumber = number;
 		setChanged();
 		notifyObservers(ObserverInfo.NUMS);
 		
 	}
 	
-	public void setNumb(int xComponent, int yComponent, int i) {
-		// TODO Auto-generated method stub
+	public void setNumberXY(int xComponent, int yComponent, int i) {
+		
 		game[yComponent][xComponent] = i;
 		
 	}
@@ -91,7 +91,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleCheckCandidate(int[][] game2, int y, int selectedNumber2, int checkComponent, int x, int size) {
-		// TODO Auto-generated method stub
+
 		if (checkComponent > 0) {
 			for (int i = 0; i < size; i++) {
 				if (game2[y][i] == selectedNumber2 && i != x) {
@@ -114,7 +114,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleCheckEasyBlock(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+
 		int xBlock = 0, yBlock = 0;
 		if (x < 2) 
 			xBlock = 0;
@@ -136,7 +136,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleCheckMediumBlock(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+
 		int xBlock = 0, yBlock = 0;
 		if (x < 3) 
 			xBlock = 0;
@@ -160,7 +160,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleCheckHardBlock(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+
 		int xBlock = 0, yBlock = 0;
 		if (x < 3) 
 			xBlock = 0;
@@ -200,7 +200,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleComponentEasy(int[][] game2, int y, int selectedNumber2, int checkComponent) {
-		// TODO Auto-generated method stub
+
 		if (checkComponent > 0) {
 			for (int i = 0; i < 4; i++) {
 				if (game2[y][i] == selectedNumber2) {
@@ -220,7 +220,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleComponentMedium(int[][] game2, int y, int selectedNumber2, int checkComponent) {
-		// TODO Auto-generated method stub
+
 		if (checkComponent > 0) {
 			for (int i = 0; i < 6; i++) {
 				if (game2[y][i] == selectedNumber2) {
@@ -240,7 +240,7 @@ public class Sudoku extends Observable {
 	}
 
 	private boolean isPossibleComponentHard(int[][] game2, int y, int selectedNumber2, int checkComponent) {
-		// TODO Auto-generated method stub
+
 		if (checkComponent > 0) {
 			for (int i = 0; i < 9; i++) {
 				if (game2[y][i] == selectedNumber2) {
@@ -262,7 +262,7 @@ public class Sudoku extends Observable {
 	}	
 	
 	private boolean isPossibleBlockEasy(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+
 		int xBlock = 0, yBlock = 0;
 		if (x < 2) 
 			xBlock = 0;
@@ -284,7 +284,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleBlockMedium(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+	
 		int xBlock = 0, yBlock = 0;
 		if (x < 3) 
 			xBlock = 0;
@@ -308,7 +308,7 @@ public class Sudoku extends Observable {
 	}
 	
 	private boolean isPossibleBlockHard(int[][] game2, int x, int y, int selectedNumber2) {
-		// TODO Auto-generated method stub
+
 		int xBlock = 0, yBlock = 0;
 		if (x < 3) 
 			xBlock = 0;
@@ -373,7 +373,7 @@ public class Sudoku extends Observable {
 
 
 	public void newEasySudoku() {
-		// TODO Auto-generated method stub
+
 		solution = solutionCreate(new int[4][4], 0, 4);
 		game = createGame(copy(solution, 4), 4);
 		setChanged();
@@ -382,7 +382,7 @@ public class Sudoku extends Observable {
 	}
 
 	public void newMediumSudoku() {
-		// TODO Auto-generated method stub
+	
 		solution = solutionCreate(new int[6][6], 0, 6);
 		game = createGame(copy(solution, 6), 6);
 		setChanged();
@@ -392,7 +392,7 @@ public class Sudoku extends Observable {
 	
 
 	public void newHardSudoku() {
-		// TODO Auto-generated method stub
+	
 		solution = solutionCreate(new int[9][9], 0, 9);
 		game = createGame(copy(solution, 9), 9);
 		setChanged();

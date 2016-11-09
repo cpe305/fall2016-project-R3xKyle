@@ -110,7 +110,6 @@ public class GridButtons extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		switch ((ObserverInfo)arg) {
 		case NEW_HARD_GAME:
 			for (int i = 0; i < 9; i++) {

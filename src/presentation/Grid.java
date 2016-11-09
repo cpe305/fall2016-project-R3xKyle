@@ -87,7 +87,7 @@ public class Grid extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		
 		switch ((ObserverInfo)arg) {
 		case NEW_EASY_GAME:
 			setEasyGame((Sudoku)o);
@@ -110,7 +110,7 @@ public class Grid extends JPanel implements Observer {
 
 
 	public void setEasyGame(Sudoku sudoku) {
-		// TODO Auto-generated method stub
+		
 		sudoku.setSize(4);
 		removeMedium();
 		removeHard();
@@ -126,14 +126,14 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				boxesEasy[i][j].setBackground(Color.WHITE);
-				boxesEasy[i][j].setNumber(sudoku.getNumber(j, i), false);
+				boxesEasy[i][j].setNumber(sudoku.getNumberXY(j, i), false);
 			}
 		}
 
 	}
 	
 	public void setMediumGame(Sudoku sudoku) {
-		// TODO Auto-generated method stub
+	
 		sudoku.setSize(6);
 		removeEasy();
 		removeHard();
@@ -150,14 +150,14 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				boxesMedium[i][j].setBackground(Color.WHITE);
-				boxesMedium[i][j].setNumber(sudoku.getNumber(j, i), false);
+				boxesMedium[i][j].setNumber(sudoku.getNumberXY(j, i), false);
 			}
 		}
 	}	
 
 
 	public void setHardGame(Sudoku sudoku) {
-		// TODO Auto-generated method stub
+		
 		sudoku.setSize(9);
 		removeEasy();
 		removeMedium();
@@ -173,13 +173,13 @@ public class Grid extends JPanel implements Observer {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				boxesHard[i][j].setBackground(Color.WHITE);
-				boxesHard[i][j].setNumber(sudoku.getNumber(j, i), false);
+				boxesHard[i][j].setNumber(sudoku.getNumberXY(j, i), false);
 			}
 		}
 	}
 
 
-	private void setGameCheck(Sudoku sudoku) { // this is not working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! use isPossibleCOmponent and block logic in setBackground()
+	private void setGameCheck(Sudoku sudoku) {
 		int size = sudoku.getSize();
 
 		if ("Easy".equals(currentMode)) {
@@ -219,16 +219,11 @@ public class Grid extends JPanel implements Observer {
 		}
 	}
 	
-	public void mouseSetup(ActionOnMouse mouseAction) { // gotta fix this too
+	public void mouseSetup(ActionOnMouse mouseAction) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				panelsEasy[i][j].addMouseListener(mouseAction);
-			}
-		}
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				panelsHard[i][j].addMouseListener(mouseAction);
 			}
 		}
 		for (int i = 0; i < 2; i++) {
@@ -236,6 +231,12 @@ public class Grid extends JPanel implements Observer {
 				panelsMedium[i][j].addMouseListener(mouseAction);
 			}
 		}
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				panelsHard[i][j].addMouseListener(mouseAction);
+			}
+		}
+
 	}
 	
 	public void removeEasy() {

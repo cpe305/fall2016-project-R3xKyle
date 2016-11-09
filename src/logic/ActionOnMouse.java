@@ -30,17 +30,17 @@ public class ActionOnMouse implements MouseListener {
 			int xComponent = box.getXComponent();
 			int yComponent = box.getYComponent();
 			
-			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumber(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
-				int number = sudoku.getNumb();
+			if (click.getButton() == MouseEvent.BUTTON1 && (sudoku.getNumberXY(xComponent, yComponent) == 0 || box.getForeground().equals(Color.BLUE))) {
+				int number = sudoku.getNumberSimple();
 				if (number == -1) {
 					return;
 				}
-				sudoku.setNumb(xComponent, yComponent, number);
+				sudoku.setNumberXY(xComponent, yComponent, number);
 				box.setNumber(number, true);
 				
 			}
 			else if (click.getButton() == MouseEvent.BUTTON3 && !box.getForeground().equals(Color.BLACK)) {
-				sudoku.setNumb(xComponent, yComponent, 0);
+				sudoku.setNumberXY(xComponent, yComponent, 0);
 				box.setNumber(0, false);
 			}
 			grid.update(sudoku, ObserverInfo.CANDIDATES); // 
@@ -51,26 +51,25 @@ public class ActionOnMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	
