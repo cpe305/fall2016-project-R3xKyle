@@ -1,4 +1,3 @@
-ACTIONONMOUSE
 package logic;
 
 import java.awt.Color;

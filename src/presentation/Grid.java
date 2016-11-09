@@ -1,4 +1,3 @@
-GRID
 
 package presentation;
 

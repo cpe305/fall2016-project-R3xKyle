@@ -1,4 +1,3 @@
-SUDOKU
 
 package logic;
 
