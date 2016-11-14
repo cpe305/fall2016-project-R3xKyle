@@ -27,7 +27,7 @@ public class ActionOnButton implements ActionListener {
 			sudoku.checkSudoku();
 		}
 		else if ("Quit".equals(buttonPress.getActionCommand())) { 
-			System.exit(0); //look at close window method for swing
+			System.exit(0); 
 		}
 		else {
 			number = Integer.parseInt(buttonPress.getActionCommand());

@@ -14,9 +14,6 @@ import logic.ActionOnMouse;
 import logic.Sudoku;
 
 public class Grid extends JPanel implements Observer {
-
-	
-	private static final Color COLOR_CANDIDATE = new Color(102, 153, 255);
 	
 	private Box[][] boxesHard;
 	private JPanel[][] panelsHard;
