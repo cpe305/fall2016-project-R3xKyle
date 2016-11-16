@@ -1,5 +1,5 @@
 
-package presentation;
+package main.java.presentation;
 
 import java.awt.Color;
 import java.awt.Dimension;

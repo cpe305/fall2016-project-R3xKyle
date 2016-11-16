@@ -1,5 +1,5 @@
 
-package presentation;
+package main.java.presentation;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -9,9 +9,9 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import data.ObserverInfo;
-import logic.ActionOnMouse;
-import logic.Sudoku;
+import main.java.data.ObserverInfo;
+import main.java.logic.ActionOnMouse;
+import main.java.logic.Sudoku;
 
 public class Grid extends JPanel implements Observer {
 	

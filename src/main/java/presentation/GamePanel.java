@@ -1,12 +1,12 @@
-package presentation;
+package main.java.presentation;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import logic.ActionOnButton;
-import logic.ActionOnMouse;
-import logic.Sudoku;
+import main.java.logic.ActionOnButton;
+import main.java.logic.ActionOnMouse;
+import main.java.logic.Sudoku;
 
 public class GamePanel extends JFrame {
 

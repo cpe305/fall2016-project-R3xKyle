@@ -1,10 +1,10 @@
-package tests;
+package test.java;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import logic.Sudoku;
+import main.java.logic.Sudoku;
 
 public class TestSudoku {
 
