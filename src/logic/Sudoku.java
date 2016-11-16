@@ -95,7 +95,7 @@ public class Sudoku extends Observable {
 
 		if (checkComponent > 0) {
 			for (int i = 0; i < size; i++) {
-				if (game2[y][i] == selectedNumber2 && i != x) {
+				if (game2[y][i] == selectedNumber2 && i != x && selectedNumber2 != 0) {
 					System.out.println("\n this is checkComponent > 0, game2[y][i] = " + game2[y][i] + " i is " + i + " y is "  + y + " x is " + x + "selectedNumber2 = " + selectedNumber2);
 							
 					return false;
@@ -105,7 +105,7 @@ public class Sudoku extends Observable {
 		}
 		else {
 			for (int i = 0; i < size; i++) {
-				if (game2[i][y] == selectedNumber2 && i != x) {
+				if (game2[i][y] == selectedNumber2 && i != x && selectedNumber2 != 0) {
 					System.out.println("\n this is checkComponent, game[i][y] = " + game2[i][y] + " i is " + i + " y is " + y + " x is " + x + " selectedNumber2 = " + selectedNumber2);
 					return false;
 				}
