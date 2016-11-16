@@ -32,6 +32,9 @@
             <activeByDefault>true</activeByDefault>
         </activation>
         <properties>
+        <sonar.exclusions>src/main/java/logic/**/*, 
+        			src/main/java/data/**/*
+        </sonar.exclusions>
             <sonar.host.url>
                 http://smartr.cs.hm.edu:9000
             </sonar.host.url>
