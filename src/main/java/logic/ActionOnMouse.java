@@ -1,4 +1,4 @@
-package main.java.logic;
+package logic;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,9 +7,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import main.java.data.ObserverInfo;
-import main.java.presentation.Box;
-import main.java.presentation.Grid;
+import data.ObserverInfo;
+import presentation.Box;
+import presentation.Grid;
 
 public class ActionOnMouse implements MouseListener {
 

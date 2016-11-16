@@ -1,4 +1,4 @@
-package main.java.presentation;
+package presentation;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,8 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import main.java.data.ObserverInfo;
-import main.java.logic.ActionOnButton;
+import data.ObserverInfo;
+import logic.ActionOnButton;
 
 // Button class that has all buttons in game
 public class GridButtons extends JPanel implements Observer {

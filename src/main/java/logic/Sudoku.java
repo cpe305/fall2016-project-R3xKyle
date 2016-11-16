@@ -1,13 +1,13 @@
 
 
-package main.java.logic;
+package logic;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-import main.java.data.ObserverInfo;
+import data.ObserverInfo;
 
 public class Sudoku extends Observable {
 
