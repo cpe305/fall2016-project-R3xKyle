@@ -22,7 +22,7 @@ public class GamePanel extends JFrame {
 		sudokuPanelButtons.buttonSetup(buttonAction);
 		add(sudokuPanelButtons, BorderLayout.EAST);
 		
-		Grid grid = new Grid(9);
+		Grid grid = new Grid();
 		ActionOnMouse mouseAction = new ActionOnMouse(grid, sudoku);
 		grid.setHardGame(sudoku); // easy, medium, or hard???
 		grid.mouseSetup(mouseAction);

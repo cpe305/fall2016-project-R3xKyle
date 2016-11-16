@@ -26,7 +26,7 @@ public class Grid extends JPanel implements Observer {
 	
 	private String currentMode = "hard";
 	
-	public Grid(int size) { // new grid for each level.
+	public Grid() { // new grid for each level.
 		super(new GridLayout(3, 3));
 		
 		panelsHard = new JPanel[3][3];
