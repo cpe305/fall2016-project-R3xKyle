@@ -1,10 +1,8 @@
-package test.java;
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import main.java.presentation.Box;
+import presentation.Box;
 
 public class BoxTest {
 
