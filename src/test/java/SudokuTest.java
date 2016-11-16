@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import main.java.logic.Sudoku;
 
-public class TestSudoku {
+public class SudokuTest {
 
 	@Test
 	public void test() {

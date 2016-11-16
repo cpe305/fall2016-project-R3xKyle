@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import main.java.presentation.Box;
 
-public class TestBox {
+public class BoxTest {
 
 	@Test
 	public void test() {
