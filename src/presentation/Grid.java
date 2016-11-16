@@ -107,7 +107,6 @@ public class Grid extends JPanel implements Observer {
 
 
 	public void setEasyGame(Sudoku sudoku) {
-		
 		sudoku.setSize(4);
 		removeMedium();
 		removeHard();
