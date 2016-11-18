@@ -140,7 +140,7 @@ public class Sudoku extends Observable {
     }
     for (int i = yblock; i < yblock + 2; i++) {
       for (int j = xblock; j < xblock + 2; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x) {
+        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
           return false;
         }
       }
@@ -168,7 +168,7 @@ public class Sudoku extends Observable {
     }
     for (int i = yblock; i < yblock + 2; i++) {
       for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x) {
+        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
           return false;
         }
       }
@@ -198,7 +198,7 @@ public class Sudoku extends Observable {
     }
     for (int i = yblock; i < yblock + 3; i++) {
       for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x) {
+        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
           System.out.println("x is " + x + " Y is " + y + "i is " + i
               + " j is " + j + " game2[i][j] is " + game2[i][j]);
 

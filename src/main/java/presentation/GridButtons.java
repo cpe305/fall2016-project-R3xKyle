@@ -114,11 +114,13 @@ public class GridButtons extends JPanel implements Observer {
         for (int i = 0; i < 9; i++) {
           numberChoices[i].setVisible(true);
         }
+        groupNumberChoices.clearSelection();
         break;
       case NEW_EASY_GAME:
         for (int i = 4; i < 9; i++) {
           numberChoices[i].setVisible(false);
         }
+        groupNumberChoices.clearSelection();
         break;
       case NEW_MEDIUM_GAME:
         for (int i = 4; i < 6; i++) {
@@ -127,6 +129,7 @@ public class GridButtons extends JPanel implements Observer {
         for (int i = 6; i < 9; i++) {
           numberChoices[i].setVisible(false);
         }
+        groupNumberChoices.clearSelection();
         break;
       case CHECK:
         groupNumberChoices.clearSelection();

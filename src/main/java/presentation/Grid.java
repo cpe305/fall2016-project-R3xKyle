@@ -186,16 +186,26 @@ public class Grid extends JPanel implements Observer {
         for (int j = 0; j < 4; j++) {
           boxesEasy[i][j].setBackground(Color.WHITE);
           if (boxesEasy[i][j].getForeground().equals(Color.BLUE)) {
-            boxesEasy[i][j].setBackground(sudoku.isCheckEasy(j, i) ? Color.GREEN : Color.RED);
+            if (!("".equals(boxesEasy[i][j].getText()))) {
+              if (sudoku.isCheckEasy(j, i)) {
+                boxesEasy[i][j].setBackground(Color.GREEN);
+              } else {
+                boxesEasy[i][j].setBackground(Color.RED);
+              }
+              //boxesEasy[i][j].setBackground(sudoku.isCheckEasy(j, i) ? Color.GREEN : Color.RED);
+              System.out.println(boxesEasy[i][j].getForeground().toString());
+            }
           }
-        }
+        } 
       }
     } else if ("Medium".equals(currentMode)) {
       for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
           boxesMedium[i][j].setBackground(Color.WHITE);
-          if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
-            boxesMedium[i][j].setBackground(sudoku.isCheckMedium(j, i) ? Color.GREEN : Color.RED);
+          if (!("".equals(boxesMedium[i][j].getText()))) {
+            if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
+              boxesMedium[i][j].setBackground(sudoku.isCheckMedium(j, i) ? Color.GREEN : Color.RED);
+            }
           }
         }
       }
@@ -203,8 +213,11 @@ public class Grid extends JPanel implements Observer {
       for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
           boxesHard[i][j].setBackground(Color.WHITE);
-          if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
-            boxesHard[i][j].setBackground(sudoku.isCheckHard(j, i) ? Color.GREEN : Color.RED);
+          if (!("".equals(boxesHard[i][j].getText()))) {
+            if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
+              boxesHard[i][j].setBackground(sudoku.isCheckHard(j, i) ? Color.GREEN : Color.RED);
+            }
+
           }
         }
       }
