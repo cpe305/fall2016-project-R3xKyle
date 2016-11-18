@@ -11,6 +11,7 @@ import data.ObserverInfo;
 import presentation.Box;
 import presentation.Grid;
 
+// Handles mouse clicks and interaction with grid
 public class ActionOnMouse implements MouseListener {
 
 
@@ -44,7 +45,7 @@ public class ActionOnMouse implements MouseListener {
 				sudoku.setNumberXY(xComponent, yComponent, 0);
 				box.setNumber(0, false);
 			}
-			grid.update(sudoku, ObserverInfo.CANDIDATES); // 
+			
 			
 		}
 		

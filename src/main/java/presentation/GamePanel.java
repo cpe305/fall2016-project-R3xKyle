@@ -8,6 +8,7 @@ import logic.ActionOnButton;
 import logic.ActionOnMouse;
 import logic.Sudoku;
 
+// includes main method - where everything starts
 public class GamePanel extends JFrame {
 
 	public GamePanel() {
@@ -24,7 +25,7 @@ public class GamePanel extends JFrame {
 		
 		Grid grid = new Grid();
 		ActionOnMouse mouseAction = new ActionOnMouse(grid, sudoku);
-		grid.setHardGame(sudoku); // easy, medium, or hard???
+		grid.setHardGame(sudoku); 
 		grid.mouseSetup(mouseAction);
 		add(grid, BorderLayout.CENTER);
 		

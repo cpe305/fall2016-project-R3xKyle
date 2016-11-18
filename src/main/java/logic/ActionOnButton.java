@@ -3,7 +3,7 @@ package logic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+// handles the actions on buttons clicked
 public class ActionOnButton implements ActionListener {
 	private Sudoku sudoku;
 	int number;

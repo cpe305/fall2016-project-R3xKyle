@@ -13,6 +13,7 @@ import data.ObserverInfo;
 import logic.ActionOnMouse;
 import logic.Sudoku;
 
+// controls the Grid - Sudoku - with UI updates on user interaction
 public class Grid extends JPanel implements Observer {
 	
 	private Box[][] boxesHard;
@@ -26,7 +27,7 @@ public class Grid extends JPanel implements Observer {
 	
 	private String currentMode = "hard";
 	
-	public Grid() { // new grid for each level.
+	public Grid() {
 		super(new GridLayout(3, 3));
 		
 		panelsHard = new JPanel[3][3];

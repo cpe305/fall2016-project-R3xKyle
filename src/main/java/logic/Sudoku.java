@@ -9,6 +9,7 @@ import java.util.Observable;
 
 import data.ObserverInfo;
 
+// All the game logic
 public class Sudoku extends Observable {
 
 	
@@ -57,8 +58,6 @@ public class Sudoku extends Observable {
 
 		selectedNumber = number;
 		setChanged();
-		notifyObservers(ObserverInfo.NUMS);
-		
 	}
 	
 	public void setNumberXY(int xComponent, int yComponent, int i) {

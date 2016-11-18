@@ -8,6 +8,8 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
+
+// Each individual box for the grid which holds a position (x, y) 
 public class Box extends JLabel {
 
 
@@ -19,7 +21,7 @@ public class Box extends JLabel {
 		this.x = x;
 		this.y = y;
 		
-		setPreferredSize(new Dimension(40, 40)); // New dimension???
+		setPreferredSize(new Dimension(40, 40));
 		setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
 		setOpaque(true);

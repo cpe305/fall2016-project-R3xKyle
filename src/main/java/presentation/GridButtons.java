@@ -22,7 +22,7 @@ public class GridButtons extends JPanel implements Observer {
 	JButton easyGameButton, mediumGameButton, hardGameButton, quitButton, checkGameButton;
 	JToggleButton[] numberChoices;
 	ButtonGroup groupNumberChoices;
-	
+	 // add timer and another JPanel
 	public GridButtons() {
 		super(new BorderLayout());
 		
@@ -32,19 +32,20 @@ public class GridButtons extends JPanel implements Observer {
 		add(panel, BorderLayout.CENTER);
 		
 		// Panel to hold all the options
-		JPanel optionsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel optionsPanel = new JPanel();
+		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.PAGE_AXIS));
 		optionsPanel.setBorder(BorderFactory.createTitledBorder(" Sudoku Options "));
 		panel.add(optionsPanel);
 		
 		// Panel to hold the panel of numbers
 		JPanel numListPanel = new JPanel();
-		numListPanel.setLayout(new BoxLayout(numListPanel, BoxLayout.LINE_AXIS));
+		numListPanel.setLayout(new BoxLayout(numListPanel, BoxLayout.PAGE_AXIS));
 		numListPanel.setBorder(BorderFactory.createTitledBorder(" Numbers "));
 		panel.add(numListPanel);
 		
 		// Panel with the numbers
-		JPanel numbersPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		numbersPanel.setLayout(new BoxLayout(numbersPanel, BoxLayout.Y_AXIS));
+		JPanel numbersPanel = new JPanel();//new FlowLayout(FlowLayout.CENTER));
+		numbersPanel.setLayout(new BoxLayout(numbersPanel, BoxLayout.PAGE_AXIS));
 		numListPanel.add(numbersPanel);
 		
 		// button that would start a new easy game -- 4x4 grid
@@ -72,10 +73,6 @@ public class GridButtons extends JPanel implements Observer {
 		quitButton = new JButton("Quit");
 		quitButton.setFocusable(false);
 		optionsPanel.add(quitButton);
-		
-
-		
-		//settings and high scores tab
 		
 		groupNumberChoices = new ButtonGroup();
 		numberChoices = new JToggleButton[9];
@@ -129,6 +126,8 @@ public class GridButtons extends JPanel implements Observer {
 			break;
 		case CHECK:
 			groupNumberChoices.clearSelection();
+			break;
+		default:
 			break;
 		}
 	}
