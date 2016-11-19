@@ -1,8 +1,10 @@
 package presentation;
 
+import data.ObserverInfo;
+import logic.ActionOnButton;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,9 +14,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-
-import data.ObserverInfo;
-import logic.ActionOnButton;
 
 // Button class that has all buttons in game
 public class GridButtons extends JPanel implements Observer {
@@ -26,7 +25,8 @@ public class GridButtons extends JPanel implements Observer {
   JButton checkGameButton;
   JToggleButton[] numberChoices;
   ButtonGroup groupNumberChoices;
-  // add timer and another JPanel
+  // jpanel for timer
+  
   public GridButtons() {
     super(new BorderLayout());
 

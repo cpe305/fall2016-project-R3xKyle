@@ -6,14 +6,14 @@ import presentation.Box;
 
 public class BoxTest {
 
-	@Test
-	public void test() {
-		int x = 5;
-		int y = 6;
-		Box box = new Box(x, y);
-		assertEquals(box.getXComponent(), x);
-		//assertEquals(box.getYComponent(), y);
-		
-	}
+  @Test
+  public void test() {
+    int xcomponent = 5;
+    int ycomponent = 6;
+    Box box = new Box(xcomponent, ycomponent);
+    assertEquals(box.getXComponent(), xcomponent);
+    assertEquals(box.getYComponent(), ycomponent);
+
+  }
 
 }

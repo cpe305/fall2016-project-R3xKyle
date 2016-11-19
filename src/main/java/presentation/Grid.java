@@ -187,7 +187,7 @@ public class Grid extends JPanel implements Observer {
           boxesEasy[i][j].setBackground(Color.WHITE);
           if (boxesEasy[i][j].getForeground().equals(Color.BLUE)) {
             if (!("".equals(boxesEasy[i][j].getText()))) {
-              if (sudoku.isCheckEasy(j, i)) {
+              if (sudoku.checkEasySimple(j, i)) {
                 boxesEasy[i][j].setBackground(Color.GREEN);
               } else {
                 boxesEasy[i][j].setBackground(Color.RED);
@@ -204,7 +204,7 @@ public class Grid extends JPanel implements Observer {
           boxesMedium[i][j].setBackground(Color.WHITE);
           if (!("".equals(boxesMedium[i][j].getText()))) {
             if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
-              boxesMedium[i][j].setBackground(sudoku.isCheckMedium(j, i) ? Color.GREEN : Color.RED);
+              boxesMedium[i][j].setBackground(sudoku.checkMediumSimple(j, i) ? Color.GREEN : Color.RED);
             }
           }
         }
@@ -215,7 +215,7 @@ public class Grid extends JPanel implements Observer {
           boxesHard[i][j].setBackground(Color.WHITE);
           if (!("".equals(boxesHard[i][j].getText()))) {
             if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
-              boxesHard[i][j].setBackground(sudoku.isCheckHard(j, i) ? Color.GREEN : Color.RED);
+              boxesHard[i][j].setBackground(sudoku.checkHardSimple(j, i) ? Color.GREEN : Color.RED);
             }
 
           }

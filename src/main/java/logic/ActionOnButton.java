@@ -23,7 +23,10 @@ public class ActionOnButton implements ActionListener {
     } else if ("Check Game".equals(buttonPress.getActionCommand())) {
       sudoku.checkSudoku();
     } else if ("Complete".equals(buttonPress.getActionCommand())) { 
-      sudoku.completeGameCheck(); 
+      int completeCheck = sudoku.completeGameCheck();
+      if (completeCheck > 0) {
+        //time.stop
+      }
     } else {
       number = Integer.parseInt(buttonPress.getActionCommand());
       sudoku.setNumberSimple(number);
