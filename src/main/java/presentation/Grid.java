@@ -192,7 +192,6 @@ public class Grid extends JPanel implements Observer {
               } else {
                 boxesEasy[i][j].setBackground(Color.RED);
               }
-              //boxesEasy[i][j].setBackground(sudoku.isCheckEasy(j, i) ? Color.GREEN : Color.RED);
               System.out.println(boxesEasy[i][j].getForeground().toString());
             }
           }
@@ -204,7 +203,11 @@ public class Grid extends JPanel implements Observer {
           boxesMedium[i][j].setBackground(Color.WHITE);
           if (!("".equals(boxesMedium[i][j].getText()))) {
             if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
-              boxesMedium[i][j].setBackground(sudoku.checkMediumSimple(j, i) ? Color.GREEN : Color.RED);
+              if (sudoku.checkMediumSimple(j, i)) {
+                boxesMedium[i][j].setBackground(Color.GREEN);
+              } else {
+                boxesMedium[i][j].setBackground(Color.RED);
+              }
             }
           }
         }
@@ -215,9 +218,12 @@ public class Grid extends JPanel implements Observer {
           boxesHard[i][j].setBackground(Color.WHITE);
           if (!("".equals(boxesHard[i][j].getText()))) {
             if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
-              boxesHard[i][j].setBackground(sudoku.checkHardSimple(j, i) ? Color.GREEN : Color.RED);
+              if (sudoku.checkHardSimple(j, i)) {
+                boxesHard[i][j].setBackground(Color.GREEN);
+              } else {
+                boxesHard[i][j].setBackground(Color.RED);
+              }
             }
-
           }
         }
       }

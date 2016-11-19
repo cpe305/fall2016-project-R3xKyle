@@ -1,16 +1,27 @@
 package presentation;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-
 import logic.ActionOnButton;
 import logic.ActionOnMouse;
 import logic.Sudoku;
 
-// includes main method - where everything starts
-public class GamePanel extends JFrame {
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 
+
+
+// includes main method - where everything starts
+/**
+ * .
+ * @author Kyle
+ *
+ */
+
+public class GamePanel extends JFrame {
+  
+  /**
+   * .
+   */
+  
   public GamePanel() {
     super("My Sudoku");
 
@@ -39,7 +50,11 @@ public class GamePanel extends JFrame {
 
 
   }
-
+  /**
+   * .
+   * @param args The command line arguments.
+   */
+  
   public static void main(String[] args) {
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
@@ -47,9 +62,6 @@ public class GamePanel extends JFrame {
         frame.setVisible(true);
       }
     });
-    //new Sudoku(4); 
-    // new Sudoku(6);
-    //new Sudoku(9);
   }
 
 
