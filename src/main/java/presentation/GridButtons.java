@@ -22,7 +22,7 @@ public class GridButtons extends JPanel implements Observer {
   JButton easyGameButton;
   JButton mediumGameButton;
   JButton hardGameButton;
-  JButton quitButton;
+  JButton completeButton;
   JButton checkGameButton;
   JToggleButton[] numberChoices;
   ButtonGroup groupNumberChoices;
@@ -74,9 +74,9 @@ public class GridButtons extends JPanel implements Observer {
     optionsPanel.add(checkGameButton);
 
     //button that would quit the game
-    quitButton = new JButton("Quit");
-    quitButton.setFocusable(false);
-    optionsPanel.add(quitButton);
+    completeButton = new JButton("Complete");
+    completeButton.setFocusable(false);
+    optionsPanel.add(completeButton);
 
     groupNumberChoices = new ButtonGroup();
     numberChoices = new JToggleButton[9];
@@ -97,7 +97,7 @@ public class GridButtons extends JPanel implements Observer {
     easyGameButton.addActionListener(buttonAction);
     mediumGameButton.addActionListener(buttonAction);
     hardGameButton.addActionListener(buttonAction);
-    quitButton.addActionListener(buttonAction);
+    completeButton.addActionListener(buttonAction);
     checkGameButton.addActionListener(buttonAction);
 
     for (int i = 0; i < 9; i++) {

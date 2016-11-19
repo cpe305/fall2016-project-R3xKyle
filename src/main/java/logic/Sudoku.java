@@ -15,7 +15,7 @@ public class Sudoku extends Observable {
 
   private int[][] solution;
   private int[][] game;
-  private int selectedNumber; 
+  private int toggleButton; 
   private int size;
 
   public Sudoku() {
@@ -45,7 +45,7 @@ public class Sudoku extends Observable {
 
 
   public int getNumberSimple() {
-    return selectedNumber;
+    return toggleButton;
   }
 
   public int getNumberXY(int xComponent, int yComponent) {
@@ -55,7 +55,7 @@ public class Sudoku extends Observable {
 
   public void setNumberSimple(int number) {
 
-    selectedNumber = number;
+    toggleButton = number;
     setChanged();
   }
 
@@ -65,45 +65,45 @@ public class Sudoku extends Observable {
 
   }
 
-  public boolean isCheckEasy(int x, int y) {
-    return isPossibleCheckCandidate(game, y, game[y][x], 1, x, size)
-        && isPossibleCheckCandidate(game, x, game[y][x], 0, y, size)
-        && isPossibleCheckEasyblock(game, x, y, game[y][x]);
+  public boolean isCheckEasy(int xcomponent, int ycomponent) {
+    return isPossibleCheckCandidate(game, ycomponent, game[ycomponent][xcomponent], 1, xcomponent, size)
+        && isPossibleCheckCandidate(game, xcomponent, game[ycomponent][xcomponent], 0, ycomponent, size)
+        && isPossibleCheckEasyblock(game, xcomponent, ycomponent, game[ycomponent][xcomponent]);
   }
 
-  public boolean isCheckMedium(int x, int y) {
-    return isPossibleCheckCandidate(game, y, game[y][x], 1, x, size)
-        && isPossibleCheckCandidate(game, x, game[y][x], 0, y, size)
-        && isPossibleCheckMediumBlock(game, x, y, game[y][x]);
+  public boolean isCheckMedium(int xcomponent, int ycomponent) {
+    return isPossibleCheckCandidate(game, ycomponent, game[ycomponent][xcomponent], 1, xcomponent, size)
+        && isPossibleCheckCandidate(game, xcomponent, game[ycomponent][xcomponent], 0, ycomponent, size)
+        && isPossibleCheckMediumBlock(game, xcomponent, ycomponent, game[ycomponent][xcomponent]);
   }
 
-  public boolean isCheckHard(int x, int y) {
+  public boolean isCheckHard(int xcomponent, int ycomponent) {
     System.out.println("Size is + " + size);
-    System.out.println(isPossibleCheckCandidate(game, y, game[y][x], 1, x, size));
-    System.out.println(" " + isPossibleCheckCandidate(game, x, game[y][x], 0, y, size));
-    System.out.println(" " + isPossibleCheckHardBlock(game, x, y, game[y][x]));
+    System.out.println(isPossibleCheckCandidate(game, ycomponent, game[ycomponent][xcomponent], 1, xcomponent, size));
+    System.out.println(" " + isPossibleCheckCandidate(game, xcomponent, game[ycomponent][xcomponent], 0, ycomponent, size));
+    System.out.println(" " + isPossibleCheckHardBlock(game, xcomponent, ycomponent, game[ycomponent][xcomponent]));
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         System.out.print(game[i][j] + " ");
       }
       System.out.println();
     }
-    System.out.print("X is " + x + " Y IS" + y + " game[y][x] is " + game[y][x]);
+    System.out.print("X is " + xcomponent + " Y IS" + ycomponent + " game[ycomponent][xcomponent] is " + game[ycomponent][xcomponent]);
 
-    return isPossibleCheckCandidate(game, y, game[y][x], 1, x, size) 
-        && isPossibleCheckCandidate(game, x, game[y][x], 0, y, size) 
-        && isPossibleCheckHardBlock(game, x, y, game[y][x]);
+    return isPossibleCheckCandidate(game, ycomponent, game[ycomponent][xcomponent], 1, xcomponent, size) 
+        && isPossibleCheckCandidate(game, xcomponent, game[ycomponent][xcomponent], 0, ycomponent, size) 
+        && isPossibleCheckHardBlock(game, xcomponent, ycomponent, game[ycomponent][xcomponent]);
   }
 
-  private boolean isPossibleCheckCandidate(int[][] game2, int y,
-      int selectedNumber2, int checkComponent, int x, int size) {
+  private boolean isPossibleCheckCandidate(int[][] inputGame, int ycomponent,
+      int toggleNumber, int checkComponent, int xcomponent, int size) {
 
     if (checkComponent > 0) {
       for (int i = 0; i < size; i++) {
-        if (game2[y][i] == selectedNumber2 && i != x && selectedNumber2 != 0) {
-          System.out.println("\n this is checkComponent > 0, game2[y][i] = " + game2[y][i] 
-              + " i is " + i + " y is "  + y + " x is " + x + "selectedNumber2 = "
-              + selectedNumber2);
+        if (inputGame[ycomponent][i] == toggleNumber && i != xcomponent && toggleNumber != 0) {
+          System.out.println("\n this is checkComponent > 0, inputGame[ycomponent][i] = " + inputGame[ycomponent][i] 
+              + " i is " + i + " ycomponent is "  + ycomponent + " xcomponent is " + xcomponent + "toggleNumber = "
+              + toggleNumber);
 
           return false;
         }
@@ -112,10 +112,10 @@ public class Sudoku extends Observable {
     }
     else {
       for (int i = 0; i < size; i++) {
-        if (game2[i][y] == selectedNumber2 && i != x && selectedNumber2 != 0) {
-          System.out.println("\n this is checkComponent, game[i][y] = " + game2[i][y]
-              + " i is " + i + " y is " + y + " x is " + x + " selectedNumber2 = "
-              + selectedNumber2);
+        if (inputGame[i][ycomponent] == toggleNumber && i != xcomponent && toggleNumber != 0) {
+          System.out.println("\n this is checkComponent, game[i][ycomponent] = " + inputGame[i][ycomponent]
+              + " i is " + i + " ycomponent is " + ycomponent + " xcomponent is " + xcomponent + " toggleNumber = "
+              + toggleNumber);
           return false;
         }
       }
@@ -123,24 +123,24 @@ public class Sudoku extends Observable {
     }
   }
 
-  private boolean isPossibleCheckEasyblock(int[][] game2, int x,
-      int y, int selectedNumber2) {
+  private boolean isPossibleCheckEasyblock(int[][] inputGame, int xcomponent,
+      int ycomponent, int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 2) {
-      xblock = 0;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 2) {
+      rowblock = 0;
     } else {
-      xblock = 2;
+      rowblock = 2;
     }
-    if (y < 2) {
-      yblock = 0;
+    if (ycomponent < 2) {
+      colblock = 0;
     } else {
-      yblock = 2;
+      colblock = 2;
     }
-    for (int i = yblock; i < yblock + 2; i++) {
-      for (int j = xblock; j < xblock + 2; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
+    for (int i = colblock; i < colblock + 2; i++) {
+      for (int j = rowblock; j < rowblock + 2; j++) {
+        if (inputGame[i][j] == toggleNumber && i != ycomponent && j != xcomponent && toggleNumber != 0) {
           return false;
         }
       }
@@ -149,26 +149,26 @@ public class Sudoku extends Observable {
     return true;
   }
 
-  private boolean isPossibleCheckMediumBlock(int[][] game2, int x,
-      int y, int selectedNumber2) {
+  private boolean isPossibleCheckMediumBlock(int[][] inputGame, int xcomponent,
+      int ycomponent, int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 3) {
-      xblock = 0;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 3) {
+      rowblock = 0;
     } else {
-      xblock = 3;
+      rowblock = 3;
     }
-    if (y < 2) {
-      yblock = 0;
-    } else if (y < 4) {
-      yblock = 2;
+    if (ycomponent < 2) {
+      colblock = 0;
+    } else if (ycomponent < 4) {
+      colblock = 2;
     } else {
-      yblock = 4;
+      colblock = 4;
     }
-    for (int i = yblock; i < yblock + 2; i++) {
-      for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
+    for (int i = colblock; i < colblock + 2; i++) {
+      for (int j = rowblock; j < rowblock + 3; j++) {
+        if (inputGame[i][j] == toggleNumber && i != ycomponent && j != xcomponent && toggleNumber != 0) {
           return false;
         }
       }
@@ -177,30 +177,30 @@ public class Sudoku extends Observable {
     return true;
   }
 
-  private boolean isPossibleCheckHardBlock(int[][] game2, int x,
-      int y, int selectedNumber2) {
+  private boolean isPossibleCheckHardBlock(int[][] inputGame, int xcomponent,
+      int ycomponent, int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 3) {
-      xblock = 0;
-    } else if (x < 6) {
-      xblock = 3;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 3) {
+      rowblock = 0;
+    } else if (xcomponent < 6) {
+      rowblock = 3;
     } else {
-      xblock = 6;
+      rowblock = 6;
     }
-    if (y < 3) {
-      yblock = 0;
-    } else if (y < 6) {
-      yblock = 3;
+    if (ycomponent < 3) {
+      colblock = 0;
+    } else if (ycomponent < 6) {
+      colblock = 3;
     } else {
-      yblock = 6;
+      colblock = 6;
     }
-    for (int i = yblock; i < yblock + 3; i++) {
-      for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2 && i != y && j != x && selectedNumber2 != 0) {
-          System.out.println("x is " + x + " Y is " + y + "i is " + i
-              + " j is " + j + " game2[i][j] is " + game2[i][j]);
+    for (int i = colblock; i < colblock + 3; i++) {
+      for (int j = rowblock; j < rowblock + 3; j++) {
+        if (inputGame[i][j] == toggleNumber && i != ycomponent && j != xcomponent && toggleNumber != 0) {
+          System.out.println("xcomponent is " + xcomponent + " Y is " + ycomponent + "i is " + i
+              + " j is " + j + " inputGame[i][j] is " + inputGame[i][j]);
 
           return false;
         }
@@ -210,40 +210,40 @@ public class Sudoku extends Observable {
     return true;
   }
 
-  public boolean isCandidateEasy(int x, int y) {
-    return game[y][x] == 0
-        && isPossibleComponentEasy(game, y, selectedNumber, 1)
-        && isPossibleComponentEasy(game, x, selectedNumber, 0)
-        && isPossibleBlockEasy(game, x, y, selectedNumber);
+  public boolean isCandidateEasy(int xcomponent, int ycomponent) {
+    return game[ycomponent][xcomponent] == 0
+        && isPossibleComponentEasy(game, ycomponent, toggleButton, 1)
+        && isPossibleComponentEasy(game, xcomponent, toggleButton, 0)
+        && isPossibleBlockEasy(game, xcomponent, ycomponent, toggleButton);
   }
 
-  public boolean isCandidateMedium(int x, int y) {
-    return game[y][x] == 0
-        && isPossibleComponentMedium(game, y, selectedNumber, 1)
-        && isPossibleComponentMedium(game, x, selectedNumber, 0)
-        && isPossibleBlockMedium(game, x, y, selectedNumber);
+  public boolean isCandidateMedium(int xcomponent, int ycomponent) {
+    return game[ycomponent][xcomponent] == 0
+        && isPossibleComponentMedium(game, ycomponent, toggleButton, 1)
+        && isPossibleComponentMedium(game, xcomponent, toggleButton, 0)
+        && isPossibleBlockMedium(game, xcomponent, ycomponent, toggleButton);
   }
 
-  public boolean isCandidateHard(int x, int y) {
-    return game[y][x] == 0 
-        && isPossibleComponentHard(game, y, selectedNumber, 1)
-        && isPossibleComponentHard(game, x, selectedNumber, 0)
-        && isPossibleBlockHard(game, x, y, selectedNumber);
+  public boolean isCandidateHard(int xcomponent, int ycomponent) {
+    return game[ycomponent][xcomponent] == 0 
+        && isPossibleComponentHard(game, ycomponent, toggleButton, 1)
+        && isPossibleComponentHard(game, xcomponent, toggleButton, 0)
+        && isPossibleBlockHard(game, xcomponent, ycomponent, toggleButton);
   }
 
-  private boolean isPossibleComponentEasy(int[][] game2, int y,
-      int selectedNumber2, int checkComponent) {
+  private boolean isPossibleComponentEasy(int[][] inputGame, int ycomponent,
+      int toggleNumber, int checkComponent) {
 
     if (checkComponent > 0) {
       for (int i = 0; i < 4; i++) {
-        if (game2[y][i] == selectedNumber2) {
+        if (inputGame[ycomponent][i] == toggleNumber) {
           return false;
         }
       }
       return true;
     } else {
       for (int i = 0; i < 4; i++) {
-        if (game2[i][y] == selectedNumber2) {
+        if (inputGame[i][ycomponent] == toggleNumber) {
           return false;
         }
       }
@@ -251,12 +251,12 @@ public class Sudoku extends Observable {
     }
   }
 
-  private boolean isPossibleComponentMedium(int[][] game2, int y,
-      int selectedNumber2, int checkComponent) {
+  private boolean isPossibleComponentMedium(int[][] inputGame, int ycomponent,
+      int toggleNumber, int checkComponent) {
 
     if (checkComponent > 0) {
       for (int i = 0; i < 6; i++) {
-        if (game2[y][i] == selectedNumber2) {
+        if (inputGame[ycomponent][i] == toggleNumber) {
           return false;
         }
       }
@@ -264,7 +264,7 @@ public class Sudoku extends Observable {
     }
     else {
       for (int i = 0; i < 6; i++) {
-        if (game2[i][y] == selectedNumber2) {
+        if (inputGame[i][ycomponent] == toggleNumber) {
           return false;
         }
       }
@@ -272,23 +272,23 @@ public class Sudoku extends Observable {
     }
   }
 
-  private boolean isPossibleComponentHard(int[][] game2, int y, int selectedNumber2,
+  private boolean isPossibleComponentHard(int[][] inputGame, int ycomponent, int toggleNumber,
       int checkComponent) {
 
     if (checkComponent > 0) {
       for (int i = 0; i < 9; i++) {
-        if (game2[y][i] == selectedNumber2) {
-          //System.out.println("this is checkComponent > 0, game[y][i] = "
-          //+ game2[y][i] + "i is " + i + "selectedNumber2 = " + selectedNumber2);
+        if (inputGame[ycomponent][i] == toggleNumber) {
+          //System.out.println("this is checkComponent > 0, game[ycomponent][i] = "
+          //+ inputGame[ycomponent][i] + "i is " + i + "toggleNumber = " + toggleNumber);
           return false;
         }
       }
       return true;
     } else {
       for (int i = 0; i < 9; i++) {
-        if (game2[i][y] == selectedNumber2) {
-          //System.out.println("this is checkComponent, game[y][i] = "
-          //+ game2[y][i] + "i is " + i + "selectedNumber2 = " + selectedNumber2);
+        if (inputGame[i][ycomponent] == toggleNumber) {
+          //System.out.println("this is checkComponent, game[ycomponent][i] = "
+          //+ inputGame[ycomponent][i] + "i is " + i + "toggleNumber = " + toggleNumber);
           return false;
         }
       }
@@ -296,24 +296,24 @@ public class Sudoku extends Observable {
     }
   }
 
-  private boolean isPossibleBlockEasy(int[][] game2, int x, int y,
-      int selectedNumber2) {
+  private boolean isPossibleBlockEasy(int[][] inputGame, int xcomponent, int ycomponent,
+      int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 2) {
-      xblock = 0;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 2) {
+      rowblock = 0;
     } else {
-      xblock = 2;
+      rowblock = 2;
     }
-    if (y < 2) {
-      yblock = 0;
+    if (ycomponent < 2) {
+      colblock = 0;
     } else {
-      yblock = 2;
+      colblock = 2;
     }
-    for (int i = yblock; i < yblock + 2; i++) {
-      for (int j = xblock; j < xblock + 2; j++) {
-        if (game2[i][j] == selectedNumber2) {
+    for (int i = colblock; i < colblock + 2; i++) {
+      for (int j = rowblock; j < rowblock + 2; j++) {
+        if (inputGame[i][j] == toggleNumber) {
           return false;
         }
       }
@@ -322,26 +322,26 @@ public class Sudoku extends Observable {
     return true;
   }
 
-  private boolean isPossibleBlockMedium(int[][] game2, int x, int y,
-      int selectedNumber2) {
+  private boolean isPossibleBlockMedium(int[][] inputGame, int xcomponent, int ycomponent,
+      int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 3) {
-      xblock = 0;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 3) {
+      rowblock = 0;
     } else {
-      xblock = 3;
+      rowblock = 3;
     }
-    if (y < 2) {
-      yblock = 0;
-    } else if (y < 4) {
-      yblock = 2;
+    if (ycomponent < 2) {
+      colblock = 0;
+    } else if (ycomponent < 4) {
+      colblock = 2;
     } else {
-      yblock = 4;
+      colblock = 4;
     }
-    for (int i = yblock; i < yblock + 2; i++) {
-      for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2) {
+    for (int i = colblock; i < colblock + 2; i++) {
+      for (int j = rowblock; j < rowblock + 3; j++) {
+        if (inputGame[i][j] == toggleNumber) {
           return false;
         }
       }
@@ -350,28 +350,28 @@ public class Sudoku extends Observable {
     return true;
   }
 
-  private boolean isPossibleBlockHard(int[][] game2, int x, int y,
-      int selectedNumber2) {
+  private boolean isPossibleBlockHard(int[][] inputGame, int xcomponent, int ycomponent,
+      int toggleNumber) {
 
-    int xblock;
-    int yblock;
-    if (x < 3) {
-      xblock = 0;
-    } else if (x < 6) {
-      xblock = 3;
+    int rowblock;
+    int colblock;
+    if (xcomponent < 3) {
+      rowblock = 0;
+    } else if (xcomponent < 6) {
+      rowblock = 3;
     } else {
-      xblock = 6;
+      rowblock = 6;
     }
-    if (y < 3) {
-      yblock = 0;
-    } else if (y < 6) {
-      yblock = 3;
+    if (ycomponent < 3) {
+      colblock = 0;
+    } else if (ycomponent < 6) {
+      colblock = 3;
     } else {
-      yblock = 6;
+      colblock = 6;
     }
-    for (int i = yblock; i < yblock + 3; i++) {
-      for (int j = xblock; j < xblock + 3; j++) {
-        if (game2[i][j] == selectedNumber2) {
+    for (int i = colblock; i < colblock + 3; i++) {
+      for (int j = rowblock; j < rowblock + 3; j++) {
+        if (inputGame[i][j] == toggleNumber) {
           return false;
         }
       }
@@ -388,26 +388,26 @@ public class Sudoku extends Observable {
     if (index > (size * size - 1)) {
       return ++numberOfSolutions[0] == 1;
     }
-    int x = index % size;
-    int y = index / size;
+    int xcomponent = index % size;
+    int ycomponent = index / size;
 
-    if (game[y][x] == 0) {
-      List<Integer> numbers = new ArrayList<Integer>();
+    if (game[ycomponent][xcomponent] == 0) {
+      ArrayList<Integer> numbers = new ArrayList<Integer>();
       for (int i = 1; i <= size; i++) {
         numbers.add(i);
       }
       while (!numbers.isEmpty()) {
-        int number = solutionHelper(game, x, y, numbers, size);
+        int number = solutionHelper(game, xcomponent, ycomponent, numbers, size);
         if (number == -1) {
           break;
         }
-        game[y][x] = number;
+        game[ycomponent][xcomponent] = number;
 
         if (!isValid(game, index + 1, numberOfSolutions, size)) {
-          game[y][x] = 0;
+          game[ycomponent][xcomponent] = 0;
           return false;
         }
-        game[y][x] = 0;
+        game[ycomponent][xcomponent] = 0;
       }
     } else if (!isValid(game, index + 1, numberOfSolutions, size)) {
       return false;
@@ -451,32 +451,32 @@ public class Sudoku extends Observable {
       return game;
 
     }
-    int x = currIndex % size;
-    int y = currIndex / size;
+    int xcomponent = currIndex % size;
+    int ycomponent = currIndex / size;
 
-    List<Integer> numbers = new ArrayList<Integer>();
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
     for (int i = 1; i <= size; i++) {
       numbers.add(i);
     }
     Collections.shuffle(numbers);
 
     while (!numbers.isEmpty()) { 
-      int number = solutionHelper(game, x, y, numbers, size);
+      int number = solutionHelper(game, xcomponent, ycomponent, numbers, size);
       if (number == -1) {
         return null;
       }
-      game[y][x] = number;
+      game[ycomponent][xcomponent] = number;
       int[][] tmpGame = solutionCreate(game, currIndex + 1, size);
       if (tmpGame != null) {
         return tmpGame;
       }
-      game[y][x] = 0;
+      game[ycomponent][xcomponent] = 0;
     }
     return null;
   }
 
   private int solutionHelper(int[][] game, int i, int j,
-      List<Integer> numbers, int size) {
+      ArrayList<Integer> numbers, int size) {
     while (!numbers.isEmpty()) {
       int number = numbers.remove(0);
       if (size == 4) {
@@ -504,31 +504,31 @@ public class Sudoku extends Observable {
 
 
   public void checkSudoku() {
-    selectedNumber = 0;
+    toggleButton = 0;
     setChanged();
     notifyObservers(ObserverInfo.CHECK);
   }
 
 
   public int[][] createGame(int[][] game, int size) {
-    List<Integer> positions = new ArrayList<Integer>();
+    ArrayList<Integer> indexes = new ArrayList<Integer>();
     for (int i = 0; i < (size * size); i++) {
-      positions.add(i);
+      indexes.add(i);
     }
-    Collections.shuffle(positions);
-    return createGame(game, positions, size);
+    Collections.shuffle(indexes);
+    return createGame(game, indexes, size);
   }
 
-  public int[][] createGame(int[][] game, List<Integer> positions, int size) {
-    while (!positions.isEmpty()) {
-      int position = positions.remove(0);
-      int x = position % size;
-      int y = position / size;
-      int temp = game[y][x];
-      game[y][x] = 0;
+  public int[][] createGame(int[][] game, ArrayList<Integer> indexes, int size) {
+    while (!indexes.isEmpty()) {
+      int position = indexes.remove(0);
+      int xcomponent = position % size;
+      int ycomponent = position / size;
+      int temp = game[ycomponent][xcomponent];
+      game[ycomponent][xcomponent] = 0;
 
       if (!isValid(game, size)) {
-        game[y][x] = temp;
+        game[ycomponent][xcomponent] = temp;
       }
     }
     return game;
@@ -536,7 +536,7 @@ public class Sudoku extends Observable {
 
   private void print(int[][] game, int size) {
     System.out.println("Printing the generated puzzle for user to solve "
-        + "(" + size + " x " + size + ")");
+        + "(" + size + " xcomponent " + size + ")");
     for (int i = 0; i < size; i++) {
       for (int j = 0; j < size; j++) {
         System.out.print(" " + game[i][j]);
@@ -544,7 +544,7 @@ public class Sudoku extends Observable {
       System.out.println();
     }
     System.out.println("Printing a solution with the generated puzzle "
-        + "(" + size + " x " + size + ")");
+        + "(" + size + " xcomponent " + size + ")");
     for (int i = 0; i < size; i++) {
       for (int j = 0; j < size; j++) {
         System.out.print(" " + solution[i][j]);
@@ -553,14 +553,20 @@ public class Sudoku extends Observable {
     }
   }
 
-  private int[][] copy(int[][] game, int size) {
+  private int[][] copy(int[][] inputGame, int size) {
     int[][] copy = new int[size][size];
     for (int i = 0; i < size; i++) {
       for (int j = 0; j < size; j++) {
-        copy[i][j] = game[i][j];
+        copy[i][j] = inputGame[i][j];
       }
     }
     return copy;
+  }
+
+
+  public void completeGameCheck() {
+    // TODO Auto-generated method stub
+    
   }
 
 }

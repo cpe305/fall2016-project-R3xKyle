@@ -21,9 +21,9 @@ public class Box extends JLabel {
     this.x = x;
     this.y = y;
 
-    setPreferredSize(new Dimension(40, 40));
+    setPreferredSize(new Dimension(60, 60));
     setBorder(BorderFactory.createLineBorder(Color.GRAY));
-    setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
+    setFont(new Font(Font.DIALOG, Font.BOLD, 28));
     setOpaque(true);
   }
 
