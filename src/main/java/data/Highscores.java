@@ -27,7 +27,6 @@ public class Highscores {
     String highscoreLine = "";
     FileReader file = null;
     BufferedReader readFile = null;
-    
     try {
       file = new FileReader("sudokuhighscore.txt");
       readFile = new BufferedReader(file);
@@ -76,7 +75,11 @@ public class Highscores {
     
     if (!highscoreFile.exists()) {
       try {
-        highscoreFile.createNewFile();
+        boolean failure = highscoreFile.createNewFile();
+        if (failure == false) {
+          System.out.println("createNewFile failed");
+        }
+        
       } catch (IOException exception) {
         logger.log(null, "highscoreFile.createNewFile() failed", exception);
       }
