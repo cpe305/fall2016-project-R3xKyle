@@ -29,7 +29,7 @@ public class GridButtons extends JPanel implements Observer {
   JToggleButton[] numberChoices;
   ButtonGroup groupNumberChoices;
   JLabel bestTime;
-  Highscores highscores;
+  private Highscores highscores;
   private long startTime;
   private long time;
   private long highscore;
