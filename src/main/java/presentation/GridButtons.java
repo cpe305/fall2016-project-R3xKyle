@@ -32,8 +32,8 @@ public class GridButtons extends JPanel implements Observer {
   private long startTime;
   private long time;
   private long highscore;
-  Highscores highscores;
-  String mode;
+  private Highscores highscores;
+  private String mode;
   
   /**
    * Creates the UI layout of all the buttons (on the left side of the grid).
