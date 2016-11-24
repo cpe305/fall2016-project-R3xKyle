@@ -18,9 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 // Button class that has all buttons in game
-@SuppressWarnings("serial")
+
 public class GridButtons extends JPanel implements Observer {
 
+  private static final long serialVersionUID = 1L;
   JButton easyGameButton;
   JButton mediumGameButton;
   JButton hardGameButton;
