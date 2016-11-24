@@ -30,22 +30,22 @@ public class ActionOnMouse implements MouseListener {
     int ycomponent;
     if (component instanceof Box) {
       Box box = (Box)component;
-      xcomponent = box.getXComponent();
-      ycomponent = box.getYComponent();
+      xcomponent = box.getRowComponent();
+      ycomponent = box.getColComponent();
       
       if (click.getButton() == MouseEvent.BUTTON1 
-          && (sudoku.getNumberXY(xcomponent, ycomponent) == 0 
+          && (sudoku.getNumberRowCol(xcomponent, ycomponent) == 0 
           || box.getForeground().equals(Color.BLUE))) {
         int number = sudoku.getNumberSimple();
         if (number == -1) {
           return;
         }
-        sudoku.setNumberXY(xcomponent, ycomponent, number);
+        sudoku.setNumberRowCol(xcomponent, ycomponent, number);
         box.setNumber(number, true);
         
       } else if (click.getButton() == MouseEvent.BUTTON3 
           && !box.getForeground().equals(Color.BLACK)) {
-        sudoku.setNumberXY(xcomponent, ycomponent, 0);
+        sudoku.setNumberRowCol(xcomponent, ycomponent, 0);
         box.setNumber(0, false);
       }
       

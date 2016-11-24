@@ -11,8 +11,8 @@ public class BoxTest {
     int xcomponent = 5;
     int ycomponent = 6;
     Box box = new Box(xcomponent, ycomponent);
-    assertEquals(box.getXComponent(), xcomponent);
-    assertEquals(box.getYComponent(), ycomponent);
+    assertEquals(box.getRowComponent(), xcomponent);
+    assertEquals(box.getColComponent(), ycomponent);
 
   }
 

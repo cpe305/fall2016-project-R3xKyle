@@ -5,6 +5,7 @@ import logic.ActionOnMouse;
 import logic.Sudoku;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 
@@ -16,30 +17,29 @@ import javax.swing.JFrame;
  *
  */
 
+@SuppressWarnings("serial")
 public class GamePanel extends JFrame {
   
   /**
-   * .
+   * Sets up listeners and observers - also where the program starts.
    */
-  
   public GamePanel() {
+    
     super("My Sudoku");
-
-    getContentPane().setLayout(new BorderLayout());
-
+    
     Sudoku sudoku = new Sudoku(9);
-
     ActionOnButton buttonAction = new ActionOnButton(sudoku);
     GridButtons sudokuPanelButtons = new GridButtons();
+    
+    this.getContentPane().setLayout(new BorderLayout());
     sudokuPanelButtons.buttonSetup(buttonAction);
-    add(sudokuPanelButtons, BorderLayout.EAST);
-
+    this.add(sudokuPanelButtons, BorderLayout.WEST);
+    
     Grid grid = new Grid();
-    ActionOnMouse mouseAction = new ActionOnMouse(sudoku);
-    grid.setHardGame(sudoku); 
+    ActionOnMouse mouseAction = new ActionOnMouse(sudoku); 
     grid.mouseSetup(mouseAction);
-    add(grid, BorderLayout.CENTER);
-
+    this.add(grid, BorderLayout.CENTER);
+    
     sudoku.addObserver(sudokuPanelButtons);
     sudoku.addObserver(grid);
 
@@ -48,13 +48,12 @@ public class GamePanel extends JFrame {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
 
-
   }
+  
   /**
-   * .
+   * Starts the program.
    * @param args The command line arguments.
    */
-  
   public static void main(String[] args) {
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
@@ -63,6 +62,5 @@ public class GamePanel extends JFrame {
       }
     });
   }
-
 
 }
