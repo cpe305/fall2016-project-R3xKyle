@@ -21,7 +21,6 @@ import javax.swing.JToggleButton;
 
 public class GridButtons extends JPanel implements Observer {
 
-  private static final long serialVersionUID = 1L;
   JButton easyGameButton;
   JButton mediumGameButton;
   JButton hardGameButton;
