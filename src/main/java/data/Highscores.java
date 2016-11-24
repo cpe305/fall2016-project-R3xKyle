@@ -40,6 +40,9 @@ public class Highscores {
         if (readFile != null) {
           readFile.close();
         }
+        if (file != null) {
+          file.close();
+        }
       } catch (IOException exception2) {
         logger.log(null, "readFile.close() failed", exception2);
       }
