@@ -29,10 +29,10 @@ public class GridButtons extends JPanel implements Observer {
   JToggleButton[] numberChoices;
   ButtonGroup groupNumberChoices;
   JLabel bestTime;
+  Highscores highscores;
   private long startTime;
   private long time;
   private long highscore;
-  private Highscores highscores;
   private String mode;
   
   /**
@@ -194,13 +194,7 @@ public class GridButtons extends JPanel implements Observer {
         System.out.println("highscore = " + highscore + " time = " + time);
         if (check > 0) {
           System.out.println("highscore = " + highscore + " time = " + time);
-          if ("Easy".equals(mode)) {
-            bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
-          } else if ("Medium".equals(mode)) {
-            bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
-          } else {
-            bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
-          }
+          bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
           repaint();
         }
         System.out.println("Seconds is: " + time); 
