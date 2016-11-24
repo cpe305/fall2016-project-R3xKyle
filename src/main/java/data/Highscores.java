@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class Highscores {
   
@@ -14,6 +15,7 @@ public class Highscores {
   long mediumHighScore = -1;
   long hardHighScore = -1;
   String highscore = "";
+  Logger logger;
   
   /**
    * Reads from a file and returns the highscore. It is represented in the file
@@ -32,6 +34,7 @@ public class Highscores {
       highscoreLine = readFile.readLine();
 
     } catch (Exception exception) {
+      logger.log(null, "readFile.readLine() failed", exception);
       return -1;
     } finally {
       try {
@@ -39,7 +42,7 @@ public class Highscores {
           readFile.close();
         }
       } catch (IOException exception2) {
-        exception2.printStackTrace();
+        logger.log(null, "readFile.close() failed", exception2);
       }
     }
     
@@ -53,7 +56,6 @@ public class Highscores {
     } else if ("Hard".equals(mode)) {
       return hardHighScore;
     }
-    
     
     return -1;
   }
@@ -76,7 +78,7 @@ public class Highscores {
       try {
         highscoreFile.createNewFile();
       } catch (IOException exception) {
-        exception.printStackTrace();
+        logger.log(null, "highscoreFile.createNewFile() failed", exception);
       }
     }
     if ("Easy".equals(mode)) {
@@ -105,14 +107,17 @@ public class Highscores {
         writeFile = new BufferedWriter(file);
         writeFile.write(toWrite);
       } catch (Exception exception) {
-        exception.printStackTrace();
+        logger.log(null, "writeFile.write() failed", exception);
       } finally {
         try {
           if (writeFile != null) {
             writeFile.close();
           }
+          if (file != null) {
+            file.close();
+          }
         } catch (Exception exception2) {
-          exception2.printStackTrace();
+          logger.log(null, "writeFile.close() or file.close() failed", exception2);
         }
       }
     }
