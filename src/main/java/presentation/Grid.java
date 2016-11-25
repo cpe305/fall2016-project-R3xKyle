@@ -13,7 +13,11 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-// controls the Grid - Sudoku - with UI updates on user interaction
+/**
+ * Controls the Grid - Sudoku - with UI updates on user interaction.
+ * @author KyleRingler
+ *
+ */
 @SuppressWarnings("serial")
 public class Grid extends JPanel implements Observer {
 

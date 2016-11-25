@@ -1,12 +1,17 @@
 package logic;
 
-import data.ObserverInfo;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Observable;
 
-// All the game logic
+import data.ObserverInfo;
+
+/**
+ * Contains all the game logic.
+ * @author KyleRingler
+ *
+ */
 public class Sudoku extends Observable {
 
   private int[][] solution;
@@ -368,7 +373,7 @@ public class Sudoku extends Observable {
     int ycomponent = index / size;
 
     if (game[ycomponent][xcomponent] == 0) {
-      ArrayList<Integer> numbers = new ArrayList<Integer>();
+      List<Integer> numbers = new ArrayList<>();
       for (int i = 1; i <= size; i++) {
         numbers.add(i);
       }
@@ -443,7 +448,7 @@ public class Sudoku extends Observable {
     int xcomponent = currIndex % size;
     int ycomponent = currIndex / size;
 
-    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    List<Integer> numbers = new ArrayList<>();
     for (int i = 1; i <= size; i++) {
       numbers.add(i);
     }
@@ -474,7 +479,7 @@ public class Sudoku extends Observable {
    * @return Returns the number that is valid for the index.
    */
   private int solutionHelper(int[][] game, int xcomponent, int ycomponent,
-      ArrayList<Integer> numbers, int size) {
+      List<Integer> numbers, int size) {
     while (!numbers.isEmpty()) {
       int number = numbers.remove(0);
       if (size == 4) {
@@ -517,7 +522,7 @@ public class Sudoku extends Observable {
    * @return Returns the game that has been filled with 0's so the user can fill in.
    */
   public int[][] createGame(int[][] game, int size) {
-    ArrayList<Integer> indexes = new ArrayList<Integer>();
+    List<Integer> indexes = new ArrayList<>();
     for (int i = 0; i < (size * size); i++) {
       indexes.add(i);
     }
@@ -532,7 +537,7 @@ public class Sudoku extends Observable {
    * @param size The size of the puzzle.
    * @return Returns the game that has been filled with 0's so the user can fill in.
    */
-  public int[][] createGame(int[][] game, ArrayList<Integer> indexes, int size) {
+  public int[][] createGame(int[][] game, List<Integer> indexes, int size) {
     while (!indexes.isEmpty()) {
       int position = indexes.remove(0);
       int xcomponent = position % size;

@@ -9,15 +9,20 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-
-
-
-// Handles mouse clicks and interaction with grid
+/**
+ * Handles mouse clicks and interaction with panels in grid.
+ * @author KyleRingler
+ *
+ */
 public class ActionOnMouse implements MouseListener {
 
 
   private Sudoku sudoku;
 
+  /**
+   * Sets and saves the instance of the game for which the listener listens.
+   * @param sudoku Instance of the game to act upon.
+   */
   public ActionOnMouse(Sudoku sudoku) {
     this.sudoku = sudoku;
   }

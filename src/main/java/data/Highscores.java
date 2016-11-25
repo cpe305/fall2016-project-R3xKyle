@@ -79,7 +79,7 @@ public class Highscores {
     if (!highscoreFile.exists()) {
       try {
         boolean failure = highscoreFile.createNewFile();
-        if (failure == false) {
+        if (!failure) {
           System.out.println("createNewFile failed");
         }
         

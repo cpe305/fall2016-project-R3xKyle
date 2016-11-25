@@ -3,11 +3,19 @@ package logic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// handles the actions on buttons clicked
+/**
+ * Handles the actions when the buttons are clicked.
+ * @author KyleRingler
+ *
+ */
 public class ActionOnButton implements ActionListener {
   private Sudoku sudoku;
   int number;
 
+  /**
+   * Sets and saves the instance of the game for which the listener listens.
+   * @param sudoku Instance of the game to act upon.
+   */
   public ActionOnButton(Sudoku sudoku) {
     this.sudoku = sudoku;
   }

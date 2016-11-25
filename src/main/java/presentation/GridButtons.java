@@ -17,8 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-// Button class that has all buttons in game
-
+/**
+ * Button class that has all the buttons in game.
+ * @author KyleRingler
+ *
+ */
 public class GridButtons extends JPanel implements Observer {
 
   JButton easyGameButton;

@@ -9,7 +9,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 
-// Each individual box for the grid which holds a position (xcomponent, ycomponent) 
+/**
+ * Each individual box for the grid which holds a position (xcomponent, ycomponent).
+ * @author KyleRingler
+ *
+ */
 @SuppressWarnings("serial")
 public class Box extends JLabel {
 
@@ -40,7 +44,7 @@ public class Box extends JLabel {
    *     false, the number is represented black for generated input.
    */
   public void setNumber(int number, boolean userInput) {
-    if (userInput == true) {
+    if (userInput) {
       setForeground(Color.BLUE);
     } else {
       setForeground(Color.BLACK);
