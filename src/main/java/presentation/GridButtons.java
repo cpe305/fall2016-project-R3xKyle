@@ -22,6 +22,7 @@ import javax.swing.JToggleButton;
  * @author KyleRingler
  *
  */
+@SuppressWarnings("serial")
 public class GridButtons extends JPanel implements Observer {
 
   JButton easyGameButton;
@@ -148,7 +149,8 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60) + "mins" + (highscore % 60) + "secs");
+          bestTime.setText("Best Time: " + (highscore / 60)
+              + " mins " + (highscore % 60) + " secs");
         } else {
           bestTime.setText("Best Time: --");
         }
@@ -162,7 +164,8 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60) + "mins" + (highscore % 60) + "secs");
+          bestTime.setText("Best Time: " + (highscore / 60)
+              + " mins " + (highscore % 60) + " secs");
         } else {
           bestTime.setText("Best Time: --");
         }
@@ -179,7 +182,8 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60) + "mins" + (highscore % 60) + "secs");
+          bestTime.setText("Best Time: " + (highscore / 60)
+              + " mins " + (highscore % 60) + " secs");
         } else {
           bestTime.setText("Best Time: --");
         }
@@ -194,13 +198,10 @@ public class GridButtons extends JPanel implements Observer {
         time = (System.currentTimeMillis() - startTime) / 1000;
         highscore = highscores.getHighScore(mode);
         check = highscores.checkScore(mode, time);
-        System.out.println("highscore = " + highscore + " time = " + time);
         if (check > 0) {
-          System.out.println("highscore = " + highscore + " time = " + time);
           bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
           repaint();
         }
-        System.out.println("Seconds is: " + time); 
         break;
       default:
         break;
