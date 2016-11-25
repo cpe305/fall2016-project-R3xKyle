@@ -80,7 +80,7 @@ public class Highscores {
       try {
         boolean failure = highscoreFile.createNewFile();
         if (!failure) {
-          System.out.println("createNewFile failed");
+          logger.log(null, "createNewFile() failed");
         }
         
       } catch (IOException exception) {

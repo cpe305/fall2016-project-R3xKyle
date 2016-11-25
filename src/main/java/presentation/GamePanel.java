@@ -10,9 +10,9 @@ import javax.swing.JFrame;
 
 
 
-// includes main method - where everything starts
+
 /**
- * .
+ * includes main method - where everything starts.
  * @author Kyle
  *
  */
@@ -56,6 +56,7 @@ public class GamePanel extends JFrame {
    */
   public static void main(String[] args) {
     java.awt.EventQueue.invokeLater(new Runnable() {
+      @Override
       public void run() {
         GamePanel frame = new GamePanel();
         frame.setVisible(true);

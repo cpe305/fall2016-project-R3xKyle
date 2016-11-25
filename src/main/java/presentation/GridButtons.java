@@ -38,6 +38,8 @@ public class GridButtons extends JPanel implements Observer {
   private long time;
   private long highscore;
   private String mode;
+  private String bestTimeNotSet = "Best Time; --";
+  private String bestTimeString = "Best Time: ";
   
   /**
    * Creates the UI layout of all the buttons (on the left side of the grid).
@@ -149,10 +151,10 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60)
+          bestTime.setText(bestTimeString + (highscore / 60)
               + " mins " + (highscore % 60) + " secs");
         } else {
-          bestTime.setText("Best Time: --");
+          bestTime.setText(bestTimeNotSet);
         }
         startTime = System.currentTimeMillis();
         break;
@@ -164,10 +166,10 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60)
+          bestTime.setText(bestTimeString + (highscore / 60)
               + " mins " + (highscore % 60) + " secs");
         } else {
-          bestTime.setText("Best Time: --");
+          bestTime.setText(bestTimeNotSet);
         }
         startTime = System.currentTimeMillis();
         break;
@@ -182,10 +184,10 @@ public class GridButtons extends JPanel implements Observer {
         groupNumberChoices.clearSelection();
         highscore = highscores.getHighScore(mode);
         if (highscore > 0) {
-          bestTime.setText("Best Time: " + (highscore / 60)
+          bestTime.setText(bestTimeString + (highscore / 60)
               + " mins " + (highscore % 60) + " secs");
         } else {
-          bestTime.setText("Best Time: --");
+          bestTime.setText(bestTimeNotSet);
         }
         startTime = System.currentTimeMillis();
         break;
@@ -199,8 +201,7 @@ public class GridButtons extends JPanel implements Observer {
         highscore = highscores.getHighScore(mode);
         check = highscores.checkScore(mode, time);
         if (check > 0) {
-          bestTime.setText("Best Time: " + (time / 60) + " mins " + (time % 60) + " secs");
-          repaint();
+          bestTime.setText(bestTimeString + (time / 60) + " mins " + (time % 60) + " secs");
         }
         break;
       default:
