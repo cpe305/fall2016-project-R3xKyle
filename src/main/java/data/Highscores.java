@@ -26,10 +26,12 @@ public class Highscores {
   public long getHighScore(String mode) {
     String highscoreLine = "";
     BufferedReader readFile = null;
-    try {
-      readFile = new BufferedReader(new FileReader("sudokuhighscore.txt"));
+    try (FileReader fileName = new FileReader("sudokuhighscore.txt")) { 
+      readFile = new BufferedReader(fileName);
       highscoreLine = readFile.readLine();
-
+      if (fileName != null) {
+        fileName.close();
+      }
     } catch (Exception exception) {
       logger.log(null, "readFile.readLine() failed", exception);
       return -1;
@@ -38,6 +40,7 @@ public class Highscores {
         if (readFile != null) {
           readFile.close();
         }
+
       } catch (IOException exception2) {
         logger.log(null, "readFile.close() failed", exception2);
       }
@@ -102,9 +105,12 @@ public class Highscores {
     }
     
     if (newScoreFlag == 1) {
-      try {
-        writeFile = new BufferedWriter(new FileWriter(highscoreFile));
+      try (FileWriter fileName = new FileWriter(highscoreFile)) {
+        writeFile = new BufferedWriter(fileName);
         writeFile.write(toWrite);
+        if (fileName != null) {
+          fileName.close();
+        }
       } catch (Exception exception) {
         logger.log(null, "writeFile.write() failed", exception);
       } finally {
