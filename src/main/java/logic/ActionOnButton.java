@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class ActionOnButton implements ActionListener {
   private Sudoku sudoku;
   int number;
+  private String actionPerformed;
 
   /**
    * Sets and saves the instance of the game for which the listener listens.
@@ -22,6 +23,7 @@ public class ActionOnButton implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent buttonPress) {
+    setActionPerformed(buttonPress.getActionCommand());
     if ("New Easy Game".equals(buttonPress.getActionCommand())) {
       sudoku.newEasySudoku();
     } else if ("New Medium Game".equals(buttonPress.getActionCommand())) {
@@ -37,7 +39,14 @@ public class ActionOnButton implements ActionListener {
       sudoku.setNumberSimple(number);
     }
   }
+  
+  public void setActionPerformed(String string) {
+    actionPerformed = string;
+  }
 
+  public String returnActionPerformed() {
+    return actionPerformed;
+  }
 
 
 }

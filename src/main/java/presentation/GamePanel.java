@@ -20,6 +20,9 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class GamePanel extends JFrame {
   
+  ActionOnButton buttonAction;
+  GridButtons sudokuPanelButtons;
+  
   /**
    * Sets up listeners and observers - also where the program starts.
    */
@@ -28,8 +31,8 @@ public class GamePanel extends JFrame {
     super("My Sudoku");
     
     Sudoku sudoku = new Sudoku(9);
-    ActionOnButton buttonAction = new ActionOnButton(sudoku);
-    GridButtons sudokuPanelButtons = new GridButtons();
+    buttonAction = new ActionOnButton(sudoku);
+    sudokuPanelButtons = new GridButtons();
     
     this.getContentPane().setLayout(new BorderLayout());
     sudokuPanelButtons.buttonSetup(buttonAction);
@@ -48,6 +51,50 @@ public class GamePanel extends JFrame {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
 
+  }
+  
+  public int getLocEasyX() {
+    return (int)sudokuPanelButtons.panelLocOnScreenXEasy();
+  }
+  
+  public int getLocEasyY() {
+    return (int)sudokuPanelButtons.panelLocOnScreenYEasy();
+  }
+  
+  public int getLocMediumX() {
+    return (int)sudokuPanelButtons.panelLocOnScreenXMedium();
+  }
+  
+  public int getLocMediumY() {
+    return (int)sudokuPanelButtons.panelLocOnScreenYMedium();
+  }
+  
+  public int getLocHardX() {
+    return (int)sudokuPanelButtons.panelLocOnScreenXHard();
+  }
+  
+  public int getLocHardY() {
+    return (int)sudokuPanelButtons.panelLocOnScreenYHard();
+  }
+  
+  public int getLocCompleteX() {
+    return (int)sudokuPanelButtons.panelLocOnScreenXComplete();
+  }
+  
+  public int getLocCompleteY() {
+    return (int)sudokuPanelButtons.panelLocOnScreenYComplete();
+  }
+  
+  public int getLocCheckX() {
+    return (int)sudokuPanelButtons.panelLocOnScreenXCheck();
+  }
+  
+  public int getLocCheckY() {
+    return (int)sudokuPanelButtons.panelLocOnScreenYCheck();
+  }
+  
+  public String getButtonActionCommand() {
+    return buttonAction.returnActionPerformed();
   }
   
   /**

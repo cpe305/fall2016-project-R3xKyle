@@ -25,6 +25,7 @@ import javax.swing.JToggleButton;
 @SuppressWarnings("serial")
 public class GridButtons extends JPanel implements Observer {
 
+  JPanel panel;
   JButton easyGameButton;
   JButton mediumGameButton;
   JButton hardGameButton;
@@ -50,7 +51,7 @@ public class GridButtons extends JPanel implements Observer {
     highscores = new Highscores();
     
     // Panel to hold all the other panels
-    JPanel panel = new JPanel();
+    panel = new JPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
     add(panel, BorderLayout.NORTH);
 
@@ -76,6 +77,7 @@ public class GridButtons extends JPanel implements Observer {
     easyGameButton = new JButton("New Easy Game");
     easyGameButton.setFocusable(false);
     easyGameButton.setAlignmentX(CENTER_ALIGNMENT);
+    
     // add to the options panel
     optionsPanel.add(easyGameButton);
 
@@ -120,6 +122,7 @@ public class GridButtons extends JPanel implements Observer {
 
     }
 
+    
   }
 
   /**
@@ -208,5 +211,46 @@ public class GridButtons extends JPanel implements Observer {
         break;
     }
   }
+  
+  public double panelLocOnScreenXEasy() {
+    return panel.getLocationOnScreen().getX() + easyGameButton.getX() + 2 ;
+  }
+  
+  public double panelLocOnScreenYEasy() {
+    return panel.getLocationOnScreen().getY() + easyGameButton.getY() + 2;
+  }
+  
+  public double panelLocOnScreenXMedium() {
+    return panel.getLocationOnScreen().getX() + mediumGameButton.getX() + 2;
+  }
+  
+  public double panelLocOnScreenYMedium() {
+    return panel.getLocationOnScreen().getY() + mediumGameButton.getY() + 2;
+  }
+  
+  public double panelLocOnScreenXHard() {
+    return panel.getLocationOnScreen().getX() + hardGameButton.getX() + 2;
+  }
+  
+  public double panelLocOnScreenYHard() {
+    return panel.getLocationOnScreen().getY() + hardGameButton.getY() + 2;
+  }
+  
+  public double panelLocOnScreenXComplete() {
+    return panel.getLocationOnScreen().getX() + completeButton.getX() + 2;
+  }
+  
+  public double panelLocOnScreenYComplete() {
+    return panel.getLocationOnScreen().getY() + completeButton.getY() + 2;
+  }
+  
+  public double panelLocOnScreenXCheck() {
+    return panel.getLocationOnScreen().getX() + checkGameButton.getX() + 2;
+  }
+  
+  public double panelLocOnScreenYCheck() {
+    return panel.getLocationOnScreen().getY() + checkGameButton.getY() + 2;
+  }
+  
 
 }
