@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class GamePanel extends JFrame {
   
-  ActionOnButton buttonAction;
+  private transient ActionOnButton buttonAction;
   GridButtons sudokuPanelButtons;
   
   /**
