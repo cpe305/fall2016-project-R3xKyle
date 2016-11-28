@@ -25,11 +25,9 @@ public class Highscores {
    */
   public long getHighScore(String mode) {
     String highscoreLine = "";
-    FileReader file = null;
     BufferedReader readFile = null;
     try {
-      file = new FileReader("sudokuhighscore.txt");
-      readFile = new BufferedReader(file);
+      readFile = new BufferedReader(new FileReader("sudokuhighscore.txt"));
       highscoreLine = readFile.readLine();
 
     } catch (Exception exception) {
@@ -39,9 +37,6 @@ public class Highscores {
       try {
         if (readFile != null) {
           readFile.close();
-        }
-        if (file != null) {
-          file.close();
         }
       } catch (IOException exception2) {
         logger.log(null, "readFile.close() failed", exception2);
@@ -71,7 +66,6 @@ public class Highscores {
   public int checkScore(String mode, long score) {
     
     File highscoreFile = new File("sudokuhighscore.txt");
-    FileWriter file = null;
     BufferedWriter writeFile = null;
     int newScoreFlag = 0;
     String toWrite = "-1:-1:-1"; // initializes all highscores to -1. easy:medium:hard
@@ -109,8 +103,7 @@ public class Highscores {
     
     if (newScoreFlag == 1) {
       try {
-        file = new FileWriter(highscoreFile);
-        writeFile = new BufferedWriter(file);
+        writeFile = new BufferedWriter(new FileWriter(highscoreFile));
         writeFile.write(toWrite);
       } catch (Exception exception) {
         logger.log(null, "writeFile.write() failed", exception);
@@ -119,11 +112,8 @@ public class Highscores {
           if (writeFile != null) {
             writeFile.close();
           }
-          if (file != null) {
-            file.close();
-          }
         } catch (Exception exception2) {
-          logger.log(null, "writeFile.close() or file.close() failed", exception2);
+          logger.log(null, "writeFile.close() failed", exception2);
         }
       }
     }
