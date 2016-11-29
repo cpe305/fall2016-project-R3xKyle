@@ -39,7 +39,7 @@ public class GridButtons extends JPanel implements Observer {
   private long time;
   private long highscore;
   private String mode;
-  private String bestTimeNotSet = "Best Time; --";
+  private String bestTimeNotSet = "Best Time: --";
   private String bestTimeString = "Best Time: ";
   
   /**
@@ -65,7 +65,6 @@ public class GridButtons extends JPanel implements Observer {
     JPanel numListPanel = new JPanel();
     numListPanel.setLayout(new BoxLayout(numListPanel, BoxLayout.Y_AXIS));
     numListPanel.setAlignmentX(CENTER_ALIGNMENT);
-    numListPanel.setBorder(BorderFactory.createTitledBorder(" Numbers "));
     panel.add(numListPanel);
     
     // Panel with the numbers

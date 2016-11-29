@@ -99,6 +99,7 @@ public class Grid extends JPanel implements Observer {
     switch ((ObserverInfo)arg) {
       case NEW_EASY_GAME:
         setEasyGame((Sudoku)observable);
+        this.validate();
         currentMode = "Easy";
         break;
       case NEW_MEDIUM_GAME:
