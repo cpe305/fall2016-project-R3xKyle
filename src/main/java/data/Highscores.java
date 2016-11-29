@@ -15,7 +15,7 @@ public class Highscores {
   long mediumHighScore = -1;
   long hardHighScore = -1;
   String highscore = "";
-  Logger logger;
+  static Logger logger;
   
   /**
    * Reads from a file and returns the highscore. It is represented in the file
@@ -106,19 +106,33 @@ public class Highscores {
       try (FileWriter fileName = new FileWriter(highscoreFile)) {
         writeFile = new BufferedWriter(fileName);
         writeFile.write(toWrite);
+        writeFile.close();
         fileName.close();
       } catch (Exception exception) {
         logger.log(null, "writeFile.write() failed", exception);
-      } finally {
-        try {
-          if (writeFile != null) {
-            writeFile.close();
-          }
-        } catch (Exception exception2) {
-          logger.log(null, "writeFile.close() failed", exception2);
-        }
       }
     }
     return newScoreFlag;
+  }
+  
+  public static void createFile() {
+    String highscoreFile = "sudokuhighscore.txt";
+    String toWrite = "-1:-1:-1";
+    File file = new File(highscoreFile);
+    if (!file.exists()) {
+      try {
+        file.createNewFile();
+      } catch (IOException exception) {
+        logger.log(null, "file.createNewFile in createFile() failed", exception);
+      }
+      try (FileWriter fileWrite = new FileWriter(file)) {
+        BufferedWriter writer = new BufferedWriter(fileWrite);
+        writer.write(toWrite);
+        writer.close();
+      }
+      catch (Exception exception) {
+        logger.log(null, "new FileWriter in createFile() failed", exception);
+      }
+    }
   }
 }

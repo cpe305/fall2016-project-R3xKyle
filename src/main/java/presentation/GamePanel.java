@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import data.Highscores;
+
 
 
 
@@ -50,6 +52,8 @@ public class GamePanel extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setVisible(true);
+    
+    Highscores.createFile();
 
   }
   
