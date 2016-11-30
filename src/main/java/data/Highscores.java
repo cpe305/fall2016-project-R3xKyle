@@ -121,7 +121,9 @@ public class Highscores {
     File file = new File(highscoreFile);
     if (!file.exists()) {
       try {
-        file.createNewFile();
+        if (!file.createNewFile()) {
+          return;
+        }
       } catch (IOException exception) {
         logger.log(null, "file.createNewFile in createFile() failed", exception);
       }
