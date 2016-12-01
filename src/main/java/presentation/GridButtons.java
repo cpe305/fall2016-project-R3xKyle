@@ -2,7 +2,6 @@ package presentation;
 
 import data.Highscores;
 import data.ObserverInfo;
-import logic.ActionOnButton;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

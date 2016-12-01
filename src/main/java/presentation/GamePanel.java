@@ -1,14 +1,14 @@
 package presentation;
 
-import logic.ActionOnButton;
-import logic.ActionOnMouse;
-import logic.Sudoku;
-
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
 import data.Highscores;
+import logic.EasySudoku;
+import logic.HardSudoku;
+import logic.MediumSudoku;
+import logic.Sudoku;
 
 
 
@@ -32,21 +32,21 @@ public class GamePanel extends JFrame {
     
     super("My Sudoku");
     
-    Sudoku sudoku = new Sudoku(9);
-    buttonAction = new ActionOnButton(sudoku);
     sudokuPanelButtons = new GridButtons();
+    Grid grid = new Grid();
+    buttonAction = new ActionOnButton(sudokuPanelButtons, grid);
+    
     
     this.getContentPane().setLayout(new BorderLayout());
     sudokuPanelButtons.buttonSetup(buttonAction);
     this.add(sudokuPanelButtons, BorderLayout.WEST);
-    
-    Grid grid = new Grid();
-    ActionOnMouse mouseAction = new ActionOnMouse(sudoku); 
+
+    ActionOnMouse mouseAction = new ActionOnMouse(buttonAction); // problem 
     grid.mouseSetup(mouseAction);
     this.add(grid, BorderLayout.CENTER);
     
-    sudoku.addObserver(sudokuPanelButtons);
-    sudoku.addObserver(grid);
+    //sudoku.addObserver(sudokuPanelButtons);
+    //sudoku.addObserver(grid); 
 
     pack();
     setLocationRelativeTo(null);

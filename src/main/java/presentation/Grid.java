@@ -1,10 +1,6 @@
 
 package presentation;
 
-import data.ObserverInfo;
-import logic.ActionOnMouse;
-import logic.Sudoku;
-
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Observable;
@@ -12,6 +8,9 @@ import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
+import data.ObserverInfo;
+import logic.Sudoku;
 
 /**
  * Controls the Grid - Sudoku - with UI updates on user interaction.
@@ -99,7 +98,6 @@ public class Grid extends JPanel implements Observer {
     switch ((ObserverInfo)arg) {
       case NEW_EASY_GAME:
         setEasyGame((Sudoku)observable);
-        this.validate();
         currentMode = "Easy";
         break;
       case NEW_MEDIUM_GAME:
@@ -131,7 +129,7 @@ public class Grid extends JPanel implements Observer {
    * @param sudoku The instance of the game to act upon.
    */
   public void setEasyGame(Sudoku sudoku) {
-    sudoku.setSize(4);
+
     removeMedium();
     removeHard();
 
@@ -158,7 +156,6 @@ public class Grid extends JPanel implements Observer {
    */
   public void setMediumGame(Sudoku sudoku) {
 
-    sudoku.setSize(6);
     removeEasy();
     removeHard();
 
@@ -184,8 +181,7 @@ public class Grid extends JPanel implements Observer {
    * @param sudoku The instance of the game to act upon.
    */
   public void setHardGame(Sudoku sudoku) {
-
-    sudoku.setSize(9);
+    System.out.println("Setting hard game");
     removeEasy();
     removeMedium();
     for (int i = 0; i < 3; i++) {
@@ -208,10 +204,10 @@ public class Grid extends JPanel implements Observer {
   /**
    * Checks all of the boxes in the game for validity and fills
    *  the background in green if valid and red if not.
-   * @param sudoku The instance of the game to act upon.
+   * @param observable The instance of the game to act upon.
    * @return Returns the amount of failures of validity in the game.
    */
-  private int setGameCheck(Sudoku sudoku) {
+  private int setGameCheck(Sudoku observable) {
     int failureCount = 0;
     if ("Easy".equals(currentMode)) {
       for (int i = 0; i < 4; i++) {
@@ -222,7 +218,7 @@ public class Grid extends JPanel implements Observer {
           }
           if (boxesEasy[i][j].getForeground().equals(Color.BLUE)) {
             if (!("".equals(boxesEasy[i][j].getText()))) {
-              if (sudoku.checkEasySimple(j, i)) {
+              if (observable.checkSimple(j, i)) {
                 boxesEasy[i][j].setBackground(Color.GREEN);
               } else {
                 boxesEasy[i][j].setBackground(Color.RED);
@@ -241,7 +237,7 @@ public class Grid extends JPanel implements Observer {
           }
           if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
             if (!("".equals(boxesMedium[i][j].getText()))) {
-              if (sudoku.checkMediumSimple(j, i)) {
+              if (observable.checkSimple(j, i)) {
                 boxesMedium[i][j].setBackground(Color.GREEN);
               } else {
                 boxesMedium[i][j].setBackground(Color.RED);
@@ -260,7 +256,7 @@ public class Grid extends JPanel implements Observer {
           }
           if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
             if (!("".equals(boxesHard[i][j].getText()))) {
-              if (sudoku.checkHardSimple(j, i)) {
+              if (observable.checkSimple(j, i)) {
                 boxesHard[i][j].setBackground(Color.GREEN);
               } else {
                 boxesHard[i][j].setBackground(Color.RED);
