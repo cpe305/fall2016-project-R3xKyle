@@ -83,6 +83,7 @@ public class EasySudoku extends Sudoku {
     
   }
   
+  @Override
   public void notifyNewGame() {
     
     notifyObservers(ObserverInfo.NEW_EASY_GAME);
