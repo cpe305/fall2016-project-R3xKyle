@@ -45,9 +45,6 @@ public class GamePanel extends JFrame {
     grid.mouseSetup(mouseAction);
     this.add(grid, BorderLayout.CENTER);
     
-    //sudoku.addObserver(sudokuPanelButtons);
-    //sudoku.addObserver(grid); 
-
     pack();
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);

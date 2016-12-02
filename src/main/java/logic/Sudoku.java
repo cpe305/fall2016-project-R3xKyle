@@ -1,13 +1,13 @@
 package logic;
 
+import data.ObserverInfo;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-import data.ObserverInfo;
-import presentation.Grid;
-import presentation.GridButtons;
+
 
 public abstract class Sudoku extends Observable {
   
