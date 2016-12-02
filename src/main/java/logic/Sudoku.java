@@ -131,7 +131,7 @@ public abstract class Sudoku extends Observable {
   public abstract boolean checkRowCol(int[][] inputGame, int ycomponent,
       int toggleNumber, int checkComponent, int xcomponent);
   
-  public abstract void notifyNewGame();
+  public abstract void notifyNewGame(); 
   
   /**
    * Function needed when creating a solution - copies the array.

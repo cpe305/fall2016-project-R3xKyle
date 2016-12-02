@@ -14,7 +14,7 @@ import logic.Sudoku;
  *
  */
 public class ActionOnButton implements ActionListener {
-  private Sudoku sudoku;
+  private Sudoku sudoku = null;
   int number;
   private String actionPerformed;
   GridButtons gridButtons;
@@ -41,9 +41,13 @@ public class ActionOnButton implements ActionListener {
       addObservers();
       sudoku.notifyNewGame();
     } else if ("Check Game".equals(buttonPress.getActionCommand())) {
-      sudoku.checkSudoku();
+      if (sudoku != null) {
+        sudoku.checkSudoku();
+      }
     } else if ("Complete".equals(buttonPress.getActionCommand())) {
-      sudoku.completeGameCheck();
+      if (sudoku != null) {
+        sudoku.completeGameCheck();
+      }
     } else {
       number = Integer.parseInt(buttonPress.getActionCommand());
       sudoku.setNumberSimple(number);

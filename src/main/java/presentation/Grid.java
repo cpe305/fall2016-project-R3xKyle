@@ -109,10 +109,10 @@ public class Grid extends JPanel implements Observer {
         currentMode = "Hard";
         break;
       case CHECK:
-        setGameCheck((Sudoku)observable);
+        setGameCheck((Sudoku)observable, 0);
         break;
       case COMPLETE: // fill this in and stop time
-        int failureCount = setGameCheck((Sudoku)observable);
+        int failureCount = setGameCheck((Sudoku)observable, 1);
         if (failureCount == 0) {
           ((Sudoku)observable).timerStopUpdate();
         }
@@ -181,7 +181,7 @@ public class Grid extends JPanel implements Observer {
    * @param sudoku The instance of the game to act upon.
    */
   public void setHardGame(Sudoku sudoku) {
-    System.out.println("Setting hard game");
+
     removeEasy();
     removeMedium();
     for (int i = 0; i < 3; i++) {
@@ -207,13 +207,16 @@ public class Grid extends JPanel implements Observer {
    * @param observable The instance of the game to act upon.
    * @return Returns the amount of failures of validity in the game.
    */
-  private int setGameCheck(Sudoku observable) {
+  private int setGameCheck(Sudoku observable, int completeFlag) {
     int failureCount = 0;
     if ("Easy".equals(currentMode)) {
       for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
           boxesEasy[i][j].setBackground(Color.WHITE);
           if ("".equals(boxesEasy[i][j].getText())) {
+            if (completeFlag == 1) {
+              boxesEasy[i][j].setBackground(Color.RED);
+            }
             failureCount++;
           }
           if (boxesEasy[i][j].getForeground().equals(Color.BLUE)) {
@@ -233,6 +236,9 @@ public class Grid extends JPanel implements Observer {
         for (int j = 0; j < 6; j++) {
           boxesMedium[i][j].setBackground(Color.WHITE);
           if ("".equals(boxesMedium[i][j].getText())) {
+            if (completeFlag == 1) {
+              boxesMedium[i][j].setBackground(Color.RED);
+            }
             failureCount++;
           }
           if (boxesMedium[i][j].getForeground().equals(Color.BLUE)) {
@@ -252,6 +258,9 @@ public class Grid extends JPanel implements Observer {
         for (int j = 0; j < 9; j++) {
           boxesHard[i][j].setBackground(Color.WHITE);
           if ("".equals(boxesHard[i][j].getText())) {
+            if (completeFlag == 1) {
+              boxesHard[i][j].setBackground(Color.RED);
+            }
             failureCount++;
           }
           if (boxesHard[i][j].getForeground().equals(Color.BLUE)) {
