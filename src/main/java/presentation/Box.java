@@ -64,6 +64,10 @@ public class Box extends JLabel {
     return xcomponent;
   }
   
+  /**
+   * Get function to return the column position of the box.
+   * @return The column position of the box.
+   */
   public int getColComponent() {
     return ycomponent;
   }

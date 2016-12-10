@@ -1,16 +1,16 @@
 
 package presentation;
 
+import data.ObserverInfo;
+import logic.Sudoku;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import data.ObserverInfo;
-import logic.Sudoku;
 
 /**
  * Controls the Grid - Sudoku - with UI updates on user interaction.
@@ -33,7 +33,7 @@ public class Grid extends JPanel implements Observer {
 
   /**
    * The grid section of the game which initializes all the panels and boxes
-   *  for all difficulty levels.
+   *  for all difficulty levels. On first start up, starts with Hard layout.
    */
   public Grid() {
     super(new GridLayout(3, 3));
@@ -91,8 +91,12 @@ public class Grid extends JPanel implements Observer {
     }
   }
 
+  /**
+   * Function for the observer pattern that carries out appropriate actions when notified.
+   * @param observable Subject of an observer.
+   * @param arg Value passed through the notifyObservers() method.
+   */
   @Override
-  // For the observer pattern
   public void update(Observable observable, Object arg) {
 
     switch ((ObserverInfo)arg) {
@@ -116,7 +120,6 @@ public class Grid extends JPanel implements Observer {
         if (failureCount == 0) {
           ((Sudoku)observable).timerStopUpdate();
         }
-        System.out.println("Failure count is " + failureCount);
         break;
       default:
         break;

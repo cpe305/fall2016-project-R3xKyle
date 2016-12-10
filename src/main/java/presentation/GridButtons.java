@@ -75,8 +75,6 @@ public class GridButtons extends JPanel implements Observer {
     easyGameButton = new JButton("New Easy Game");
     easyGameButton.setFocusable(false);
     easyGameButton.setAlignmentX(CENTER_ALIGNMENT);
-    
-    // add to the options panel
     optionsPanel.add(easyGameButton);
 
     //button that would start a new medium game -- 6x6 grid
@@ -97,12 +95,13 @@ public class GridButtons extends JPanel implements Observer {
     checkGameButton.setAlignmentX(CENTER_ALIGNMENT);
     optionsPanel.add(checkGameButton);
 
-    //button that would quit the game
+    //button that would check for completion of the game
     completeButton = new JButton("Complete");
     completeButton.setFocusable(false);
     completeButton.setAlignmentX(CENTER_ALIGNMENT);
     optionsPanel.add(completeButton);
     
+    // Shows the best time of the current difficulty level
     bestTime = new JLabel("Best Time:", JLabel.CENTER);
     bestTime.setAlignmentX(CENTER_ALIGNMENT);
     bestTime.setText("Best Time:");
@@ -119,7 +118,6 @@ public class GridButtons extends JPanel implements Observer {
       numbersPanel.add(numberChoices[i]);
 
     }
-
     
   }
 
@@ -141,6 +139,11 @@ public class GridButtons extends JPanel implements Observer {
 
   }
 
+  /**
+   * Function for the observer pattern that carries out appropriate actions when notified.
+   * @param observable Subject of an observer.
+   * @param arg Value passed through the notifyObservers() method.
+   */
   @Override
   public void update(Observable observable, Object arg) {
     switch ((ObserverInfo)arg) {
@@ -210,43 +213,83 @@ public class GridButtons extends JPanel implements Observer {
     }
   }
   
-  public double panelLocOnScreenXEasy() {
+  /**
+   * Returns the row location of New Easy Game button on user's screen.
+   * @return Row location of New Easy Game button on screen.
+   */
+  public double panelLocOnScreenRowEasy() {
     return panel.getLocationOnScreen().getX() + easyGameButton.getX() + 2 ;
   }
   
-  public double panelLocOnScreenYEasy() {
+  /**
+   * Returns the column location of New Easy Game button on user's screen.
+   * @return Column location of New Easy Game button on screen.
+   */
+  public double panelLocOnScreenColEasy() {
     return panel.getLocationOnScreen().getY() + easyGameButton.getY() + 2;
   }
   
-  public double panelLocOnScreenXMedium() {
+  /**
+   * Returns the row location of New Medium Game button on user's screen.
+   * @return Row location of New Medium Game button on screen.
+   */
+  public double panelLocOnScreenRowMedium() {
     return panel.getLocationOnScreen().getX() + mediumGameButton.getX() + 2;
   }
   
-  public double panelLocOnScreenYMedium() {
+  /**
+   * Returns the column location of New Medium Game button on user's screen.
+   * @return Column location of New Medium Game button on screen.
+   */
+  public double panelLocOnScreenColMedium() {
     return panel.getLocationOnScreen().getY() + mediumGameButton.getY() + 2;
   }
   
-  public double panelLocOnScreenXHard() {
+  /**
+   * Returns the row location of New Hard Game button on user's screen.
+   * @return Row location of New Hard Game button on screen.
+   */
+  public double panelLocOnScreenRowHard() {
     return panel.getLocationOnScreen().getX() + hardGameButton.getX() + 2;
   }
   
-  public double panelLocOnScreenYHard() {
+  /**
+   * Returns the column location of New Hard Game button on user's screen.
+   * @return Column location of New Hard Game button on screen.
+   */
+  public double panelLocOnScreenColHard() {
     return panel.getLocationOnScreen().getY() + hardGameButton.getY() + 2;
   }
   
-  public double panelLocOnScreenXComplete() {
+  /**
+   * Returns the row location of the Complete button on user's screen.
+   * @return Row location of Complete button on screen.
+   */
+  public double panelLocOnScreenRowComplete() {
     return panel.getLocationOnScreen().getX() + completeButton.getX() + 2;
   }
   
-  public double panelLocOnScreenYComplete() {
+  /**
+   * Returns the column location of the Complete button on user's screen.
+   * @return Column location of Complete button on screen.
+   */
+  public double panelLocOnScreenColComplete() {
     return panel.getLocationOnScreen().getY() + completeButton.getY() + 2;
   }
   
-  public double panelLocOnScreenXCheck() {
+  /**
+   * Returns the row location of the Check Game button on user's screen.
+   * @return Row location of Check Game button on screen.
+   */
+  public double panelLocOnScreenRowCheck() {
     return panel.getLocationOnScreen().getX() + checkGameButton.getX() + 2;
   }
   
-  public double panelLocOnScreenYCheck() {
+  /**
+   * Returns the column location of the Check Game button on user's screen.
+   * @return Column location of Check Game button on screen.
+   */
+  public double panelLocOnScreenColCheck() {
     return panel.getLocationOnScreen().getY() + checkGameButton.getY() + 2;
   }
   

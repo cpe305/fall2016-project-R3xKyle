@@ -7,8 +7,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-
-
+/**
+ * Holds all the general methods for each difficulty. Used in the Observer Pattern.
+ * @author Kyle R
+ *
+ */
 public abstract class Sudoku extends Observable {
   
   protected int[][] solution;
@@ -16,10 +19,13 @@ public abstract class Sudoku extends Observable {
   private int toggleButton; 
   private int size;
   
+  /**
+   * Sets the size of the puzzle.
+   * @param size THe size of the puzzle.
+   */
   public Sudoku(int size) {
     this.size = size;
   }
-  
   
   /**
    * Get function for the size of the puzzle.
@@ -39,7 +45,7 @@ public abstract class Sudoku extends Observable {
 
   /**
    * Get function for the toggle button that is selected.
-   * @return The number of the toggle buttont that is selected.
+   * @return The number of the toggle button that is selected.
    */
   public int getNumberSimple() {
     return toggleButton;
@@ -78,6 +84,16 @@ public abstract class Sudoku extends Observable {
 
   }
   
+  /**
+   * Creates a solution by going through the game and for every index
+   * pick a random number and place it in that spot. 
+   * If it is valid, continue. Wait for it to lead to only one solution. 
+   * It is recursive because if the number placed there ended up not working,
+   * it will try the other numbers for the spot and then start from there again.
+   * @param inputGame Game to add numbers to.
+   * @param currIndex Index currently checking.
+   * @return Returns a solution board that is filled if it could and an empty array if not.
+   */
   protected int[][] solutionCreate(int[][] inputGame, int currIndex) {
     if (currIndex > (size * size - 1)) {
       return inputGame;
@@ -106,32 +122,6 @@ public abstract class Sudoku extends Observable {
     }
     return new int[0][0];
   }
-
-  /**
-   * A helper function of the solution
-   * @param inputGame The game to fill in with a solution.
-   * @param xcomponent The row index of the puzzle.
-   * @param ycomponent The column index of the puzzle.
-   * @param numbers Array List to choose random numbers between 1 and 9.
-   * @return Returns the number that is valid for the index.
-   */
-  public abstract int solutionHelper(int[][] inputGame, int xcomponent, int ycomponent,
-      List<Integer> numbers);
-
-  public abstract void newSudoku();
-  
-  public abstract boolean checkBlock(int[][] inputGame, int xcomponent, int ycomponent,
-      int toggleNumber);
-  
-  public abstract boolean checkComponent(int[][] inputGame, int index, int toggleNumber,
-      int checkComponent);
-  
-  public abstract boolean checkSimple(int xcomponent, int ycomponent);
-  
-  public abstract boolean checkRowCol(int[][] inputGame, int ycomponent,
-      int toggleNumber, int checkComponent, int xcomponent);
-  
-  public abstract void notifyNewGame(); 
   
   /**
    * Function needed when creating a solution - copies the array.
@@ -165,6 +155,7 @@ public abstract class Sudoku extends Observable {
 
   /**
    * Recursive helper function that randomly fills in 0's so the user can fill in.
+   * Uses isValid to ensure that placing a 0 in a spot still guarantees one unique solution.
    * @param inputGame The game that needs to be modified with 0's.
    * @param indexes The ArrayList that randomly spits out numbers from 1 to 9.
    * @return Returns the game that has been filled with 0's so the user can fill in.
@@ -246,10 +237,13 @@ public abstract class Sudoku extends Observable {
 
   /**
    * Recursive helper function of isValid that fills in zeroes on random spots
-   *  to generate a game for the user to fill in based on the solution.
+   * to generate a game for the user to fill in based on the solution. 
+   * Ensures in the first check that the board generated will still only lead to the one solution. 
+   * If it is not, it will return false and break the recursive loop,
+   * starting a new one at a different index.
    * @param inputGame The game that the user is filling in.
    * @param index The index of the game - goes up to size * size.
-   * @param numberOfSolutions Int array that is used to check the number of solutions.
+   * @param numberOfSolutions An int array that is used to check the number of solutions.
    * @return returns true if valid and false otherwise.
    */
   public boolean isValid(int[][] inputGame, int index, int[] numberOfSolutions) {
@@ -282,5 +276,23 @@ public abstract class Sudoku extends Observable {
     }
     return true;
   }
+  
+  public abstract int solutionHelper(int[][] inputGame, int xcomponent, int ycomponent,
+      List<Integer> numbers);
+
+  public abstract void newSudoku();
+  
+  public abstract boolean checkBlock(int[][] inputGame, int xcomponent, int ycomponent,
+      int toggleNumber);
+  
+  public abstract boolean checkComponent(int[][] inputGame, int index, int toggleNumber,
+      int checkComponent);
+  
+  public abstract boolean checkSimple(int xcomponent, int ycomponent);
+  
+  public abstract boolean checkRowCol(int[][] inputGame, int ycomponent,
+      int toggleNumber, int checkComponent, int xcomponent);
+  
+  public abstract void notifyNewGame(); 
   
 }

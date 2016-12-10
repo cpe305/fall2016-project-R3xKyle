@@ -1,11 +1,13 @@
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import logic.EasySudoku;
 import logic.HardSudoku;
 import logic.MediumSudoku;
 import logic.Sudoku;
+
+import org.junit.Test;
+
+
 
 public class SudokuTest {
 

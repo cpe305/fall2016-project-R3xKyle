@@ -1,15 +1,9 @@
 package presentation;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-
 import data.Highscores;
-import logic.EasySudoku;
-import logic.HardSudoku;
-import logic.MediumSudoku;
-import logic.Sudoku;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 
 
 
@@ -18,7 +12,6 @@ import logic.Sudoku;
  * @author Kyle
  *
  */
-
 @SuppressWarnings("serial")
 public class GamePanel extends JFrame {
   
@@ -54,46 +47,90 @@ public class GamePanel extends JFrame {
 
   }
   
-  public int getLocEasyX() {
-    return (int)sudokuPanelButtons.panelLocOnScreenXEasy();
+  /**
+   * Returns the row location of New Easy Game button on user's screen.
+   * @return Row location of New Easy Game button on screen.
+   */
+  public int getLocEasyRow() {
+    return (int)sudokuPanelButtons.panelLocOnScreenRowEasy();
   }
   
-  public int getLocEasyY() {
-    return (int)sudokuPanelButtons.panelLocOnScreenYEasy();
+  /**
+   * Returns the column location of New Easy Game button on user's screen.
+   * @return Column location of New Easy Game button on screen.
+   */
+  public int getLocEasyCol() {
+    return (int)sudokuPanelButtons.panelLocOnScreenColEasy();
   }
   
-  public int getLocMediumX() {
-    return (int)sudokuPanelButtons.panelLocOnScreenXMedium();
+  /**
+   * Returns the row location of New Medium Game button on user's screen.
+   * @return Row location of New Medium Game button on screen.
+   */
+  public int getLocMediumRow() {
+    return (int)sudokuPanelButtons.panelLocOnScreenRowMedium();
   }
   
-  public int getLocMediumY() {
-    return (int)sudokuPanelButtons.panelLocOnScreenYMedium();
+  /**
+   * Returns the column location of New Medium Game button on user's screen.
+   * @return Column location of New Medium Game button on screen.
+   */
+  public int getLocMediumCol() {
+    return (int)sudokuPanelButtons.panelLocOnScreenColMedium();
   }
   
-  public int getLocHardX() {
-    return (int)sudokuPanelButtons.panelLocOnScreenXHard();
+  /**
+   * Returns the row location of New Hard Game button on user's screen.
+   * @return Row location of New Hard Game button on screen.
+   */
+  public int getLocHardRow() {
+    return (int)sudokuPanelButtons.panelLocOnScreenRowHard();
   }
   
-  public int getLocHardY() {
-    return (int)sudokuPanelButtons.panelLocOnScreenYHard();
+  /**
+   * Returns the column location of New Hard Game button on user's screen.
+   * @return Column location of New Hard Game button on screen.
+   */
+  public int getLocHardCol() {
+    return (int)sudokuPanelButtons.panelLocOnScreenColHard();
   }
   
-  public int getLocCompleteX() {
-    return (int)sudokuPanelButtons.panelLocOnScreenXComplete();
+  /**
+   * Returns the row location of the Complete button on user's screen.
+   * @return Row location of Complete button on screen.
+   */
+  public int getLocCompleteRow() {
+    return (int)sudokuPanelButtons.panelLocOnScreenRowComplete();
   }
   
-  public int getLocCompleteY() {
-    return (int)sudokuPanelButtons.panelLocOnScreenYComplete();
+  /**
+   * Returns the column location of the Complete button on user's screen.
+   * @return Column location of Complete button on screen.
+   */
+  public int getLocCompleteCol() {
+    return (int)sudokuPanelButtons.panelLocOnScreenColComplete();
   }
   
-  public int getLocCheckX() {
-    return (int)sudokuPanelButtons.panelLocOnScreenXCheck();
+  /**
+   * Returns the row location of the Check Game button on user's screen.
+   * @return Row location of Check Game button on screen.
+   */
+  public int getLocCheckRow() {
+    return (int)sudokuPanelButtons.panelLocOnScreenRowCheck();
   }
   
-  public int getLocCheckY() {
-    return (int)sudokuPanelButtons.panelLocOnScreenYCheck();
+  /**
+   * Returns the column location of the Check Game button on user's screen.
+   * @return Column location of Check Game button on screen.
+   */
+  public int getLocCheckCol() {
+    return (int)sudokuPanelButtons.panelLocOnScreenColCheck();
   }
   
+  /**
+   * Returns the string associated with the most recent button pressed.
+   * @return String associated with the most recent button pressed.
+   */
   public String getButtonActionCommand() {
     return buttonAction.returnActionPerformed();
   }

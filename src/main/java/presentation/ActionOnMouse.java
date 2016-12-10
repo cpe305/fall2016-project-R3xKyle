@@ -1,5 +1,7 @@
 package presentation;
 
+import logic.Sudoku;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
@@ -7,7 +9,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import logic.Sudoku;
 
 /**
  * Handles mouse clicks and interaction with panels in grid.
@@ -20,12 +21,16 @@ public class ActionOnMouse implements MouseListener {
   private ActionOnButton buttonAction;
 
   /**
-   * Sets and saves the instance of the game for which the listener listens.
+   * Stores the instance of ActionOnButton that contains the current instance of the game.
    */
   public ActionOnMouse(ActionOnButton buttonAction) {
     this.buttonAction = buttonAction;
   }
 
+  /**
+   * Figures out where the mouse was clicked and sets the numbers in the box if necessary. 
+   * @param click MouseEvent associated with the click.
+   */
   @Override
   public void mousePressed(MouseEvent click) {
     Sudoku sudoku = buttonAction.getInstance();
@@ -61,25 +66,25 @@ public class ActionOnMouse implements MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent event) {
-    // Do nothing because only care about mousePressed in this project
+    // Not implemented in this project.
   }
 
 
   @Override
   public void mouseReleased(MouseEvent event) {
-    // Do nothing because only care about mousePressed in this project
+    // Not implemented in this project.
 
   }
 
   @Override
   public void mouseEntered(MouseEvent event) {
-    // Do nothing because only care about mousePressed in this project
+    // Not implemented in this project.
 
   } 
   
   @Override
   public void mouseExited(MouseEvent event) {
-    // Do nothing because only care about mousePressed in this project
+    // Not implemented in this project.
 
   }
   

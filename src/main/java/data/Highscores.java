@@ -9,6 +9,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+
+/**
+ * Class has methods for reading and writing a high score file and 
+ * returning high scores when applicable.
+ * @author Kyle R
+ *
+ */
 public class Highscores {
   
   long easyHighScore = -1;
@@ -115,6 +122,9 @@ public class Highscores {
     return newScoreFlag;
   }
   
+  /**
+   * Creates the file if it does not already exist. Runs on start up only.
+   */
   public static void createFile() {
     String highscoreFile = "sudokuhighscore.txt";
     String toWrite = "-1:-1:-1";
