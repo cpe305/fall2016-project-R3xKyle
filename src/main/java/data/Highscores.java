@@ -91,7 +91,7 @@ public class Highscores {
     }
     if ("Easy".equals(mode)) {
       if (score < easyHighScore || easyHighScore == -1) {
-        newScoreFlag = 1; // if score > highscore
+        newScoreFlag = 1;
         toWrite = score + ":" + mediumHighScore + ":" + hardHighScore;
         easyHighScore = score;
       }

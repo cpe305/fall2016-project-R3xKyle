@@ -34,7 +34,7 @@ public class GamePanel extends JFrame {
     sudokuPanelButtons.buttonSetup(buttonAction);
     this.add(sudokuPanelButtons, BorderLayout.WEST);
 
-    ActionOnMouse mouseAction = new ActionOnMouse(buttonAction); // problem 
+    ActionOnMouse mouseAction = new ActionOnMouse(buttonAction);
     grid.mouseSetup(mouseAction);
     this.add(grid, BorderLayout.CENTER);
     

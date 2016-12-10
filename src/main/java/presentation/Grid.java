@@ -115,7 +115,7 @@ public class Grid extends JPanel implements Observer {
       case CHECK:
         setGameCheck((Sudoku)observable, 0);
         break;
-      case COMPLETE: // fill this in and stop time
+      case COMPLETE:
         int failureCount = setGameCheck((Sudoku)observable, 1);
         if (failureCount == 0) {
           ((Sudoku)observable).timerStopUpdate();
