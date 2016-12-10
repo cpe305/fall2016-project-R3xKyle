@@ -8,3 +8,5 @@ Design Patterns:
    * Using the observer pattern made it easy to update the GUI when any of the Sudoku Options buttons were clicked.
 * State Pattern:
    * Using the state pattern made my project much more modular. Allows for easy addition of new states to support additional difficulties.
+
+See GitHub Pages for more. https://cpe305.github.io/fall2016-project-R3xKyle/
